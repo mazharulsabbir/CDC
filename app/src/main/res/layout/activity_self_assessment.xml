@@ -6,4 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".SelfAssessment">
 
+    <include layout="@layout/design_assessment_adapter"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
