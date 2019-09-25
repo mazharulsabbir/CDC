@@ -87,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
 
                         case 1:
                             //self assessment
+                            startActivity(new Intent(MainActivity.this,SelfAssessment.class));
+
 
                             break;
                         case 3:
@@ -102,9 +104,14 @@ public class MainActivity extends AppCompatActivity {
                         case 6:
                             break;
                          case 7:
-                            break;
+                             startActivity(new Intent(MainActivity.this,Feedback.class));
+
+                             break;
 
                         case 8:
+
+                            startActivity(new Intent(MainActivity.this,ContactUs.class));
+
                             break;
 
                     }
@@ -128,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                 super(itemView);
                 imageView=itemView.findViewById(R.id.imageViewId);
                 textView=itemView.findViewById(R.id.textViewId);
-                cardView=itemView.findViewById(R.id.cardview);
+                cardView=itemView.findViewById(R.id.cardView);
 
             }
         }
