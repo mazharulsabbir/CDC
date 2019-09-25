@@ -3,8 +3,7 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="edu.daffodil.cdc">
 
-    <dist:module dist:instant="true" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,18 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".MainActivity"
-            android:theme="@style/dashboard"
-            >
-
+        <activity android:name=".CareerPlanningMap"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/dashboard">
             <intent-filter>
-
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+
+    <dist:module dist:instant="true" />
 
 </manifest>
