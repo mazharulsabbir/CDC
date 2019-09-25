@@ -3,6 +3,7 @@ package edu.daffodil.cdc;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.zip.Inflater;
 
@@ -44,12 +46,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
-
     }
 
 
     private class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
-        LayoutInflater inflate;
         Context context;
         int[] icon;
         String[] name;
@@ -71,9 +71,45 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
             holder.imageView.setImageResource(icon[position]);
             holder.textView.setText(name[position]);
+            holder.cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    switch (position){
+                        case 0:
+                            //career plannig map
+
+                            break;
+
+                        case 1:
+                            //self assessment
+
+                            break;
+                        case 3:
+                            break;
+
+                        case 4:
+                            break;
+
+                            case 5:
+
+                            break;
+
+                        case 6:
+                            break;
+                         case 7:
+                            break;
+
+                        case 8:
+                            break;
+
+                    }
+                }
+            });
+
+
         }
 
         @Override
@@ -85,10 +121,12 @@ public class MainActivity extends AppCompatActivity {
 
             ImageView imageView;
             TextView textView;
+            CardView cardView;
              ViewHolder(@NonNull View itemView) {
                 super(itemView);
                 imageView=itemView.findViewById(R.id.imageViewId);
                 textView=itemView.findViewById(R.id.textViewId);
+                cardView=itemView.findViewById(R.id.cardview);
 
             }
         }

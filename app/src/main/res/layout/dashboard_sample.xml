@@ -6,6 +6,7 @@
     android:layout_margin="4dp"
     android:focusable="true"
     app:cardCornerRadius="8dp"
+    android:id="@+id/cardview"
     android:foreground="?attr/selectableItemBackground"
     android:layout_height="150dp">
     <androidx.constraintlayout.widget.ConstraintLayout
