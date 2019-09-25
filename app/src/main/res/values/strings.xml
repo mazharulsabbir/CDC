@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">My Application</string>
+
+
+    <string-array name="dashboard">
+        <item>Career Planning Map</item>
+        <item>Self Assessment</item>
+        <item>Schedule an Appointment</item>
+        <item>Career Option</item>
+        <item>Job Notice</item>
+        <item>Announcement</item>
+        <item>Useful Links</item>
+        <item>Feedback</item>
+        <item>Contact us</item>
+
+    </string-array>
 </resources>
