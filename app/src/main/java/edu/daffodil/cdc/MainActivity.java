@@ -1,12 +1,17 @@
 package edu.daffodil.cdc;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -15,32 +20,40 @@ import android.widget.TextView;
 import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
-    GridView gridView;
+    RecyclerView recyclerView;
 
     int[] icon={R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground,
             R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground,
             R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground};
     String[] name;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Dashboard");
 
-        gridView=findViewById(R.id.gridView);
+        recyclerView=findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         name=getResources().getStringArray(R.array.dashboard);
 
         CustomAdapter adapter= new CustomAdapter(this,icon,name);
-        gridView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
+
+
 
     }
 
 
-    private class CustomAdapter extends BaseAdapter {
+    private class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
         LayoutInflater inflate;
         Context context;
         int[] icon;
         String[] name;
+
 
         public CustomAdapter(Context context, int[] icon, String[] name) {
             this.context = context;
@@ -48,39 +61,39 @@ public class MainActivity extends AppCompatActivity {
             this.name = name;
         }
 
+        @NonNull
         @Override
-        public int getCount() {
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View v = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.dashboard_sample, parent, false);
+            return new ViewHolder(v);
+
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            holder.imageView.setImageResource(icon[position]);
+            holder.textView.setText(name[position]);
+        }
+
+        @Override
+        public int getItemCount() {
             return name.length;
         }
 
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
+         class ViewHolder extends RecyclerView.ViewHolder{
 
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            if (convertView==null){
-                inflate= (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-               convertView= inflate.inflate(R.layout.dashboard_sample,parent,false);
+            ImageView imageView;
+            TextView textView;
+             ViewHolder(@NonNull View itemView) {
+                super(itemView);
+                imageView=itemView.findViewById(R.id.imageViewId);
+                textView=itemView.findViewById(R.id.textViewId);
 
             }
-
-            ImageView img=convertView.findViewById(R.id.imageViewId);
-            TextView textView=convertView.findViewById(R.id.textViewId);
-
-
-            img.setImageResource(icon[position]);
-            textView.setText(name[position]);
-
-
-            return convertView;
         }
+
+
+
     }
 }

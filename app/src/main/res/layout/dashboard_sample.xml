@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:clickable="true"
+    android:layout_margin="4dp"
     android:focusable="true"
-    style="?attr/selectableItemBackground"
-    android:layout_height="160dp">
+    app:cardCornerRadius="8dp"
+    android:foreground="?attr/selectableItemBackground"
+    android:layout_height="150dp">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -32,6 +34,7 @@
             android:layout_marginTop="8dp"
             android:text="Robin"
             android:textSize="16sp"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="@+id/imageViewId"
             app:layout_constraintStart_toStartOf="@+id/imageViewId"
             app:layout_constraintTop_toBottomOf="@+id/imageViewId" />
