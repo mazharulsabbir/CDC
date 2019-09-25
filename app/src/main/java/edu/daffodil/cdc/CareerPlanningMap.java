@@ -16,7 +16,7 @@ public class CareerPlanningMap extends AppCompatActivity {
         setContentView(R.layout.activity_career_planning_map);
         webView =findViewById(R.id.webView);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("http://www.google.com/");
+        webView.loadUrl("http://studentportal.diu.edu.bd//");
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
     }
