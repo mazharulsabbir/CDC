@@ -41,8 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView=findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+
         name=new String[9];
-        name=getResources().getStringArray(R.array.dashboard);
+        name=getResources().getStringArray(R.array.dashboard);/*GET NAME FROM STRING RESOURCES*/
 
         CustomAdapter adapter= new CustomAdapter(this,icon,name);
         recyclerView.setAdapter(adapter);
