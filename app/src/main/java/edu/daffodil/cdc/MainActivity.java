@@ -94,16 +94,19 @@ public class MainActivity extends AppCompatActivity {
 
                             break;
                         case 3:
+                            startActivity(new Intent(MainActivity.this,CareerOptionActivity.class));
                             break;
 
                         case 4:
+
                             break;
 
                             case 5:
-
+                                startActivity(new Intent(MainActivity.this,Announcements.class));
                             break;
 
                         case 6:
+                            startActivity(new Intent(MainActivity.this,UsefulLinks.class));
                             break;
                          case 7:
                              startActivity(new Intent(MainActivity.this,Feedback.class));

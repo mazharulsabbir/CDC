@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="edu.daffodil.cdc">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <dist:module dist:instant="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,18 +28,26 @@
             android:name=".CareerPlanningMap"
             android:theme="@style/dashboard" />
 
+        <activity android:name=".UsefulLinks"/>
+
+        <activity android:name=".Announcements" />
+
+        <activity android:name=".CareerOptionActivity" />
+
         <activity
             android:name=".MainActivity"
             android:theme="@style/dashboard">
+
             <intent-filter>
+
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
     <dist:module dist:instant="true" />
 
 </manifest>
+
