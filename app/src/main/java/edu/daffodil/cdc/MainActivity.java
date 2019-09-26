@@ -1,25 +1,33 @@
 package edu.daffodil.cdc;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
-    int[] icon = {R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground,
-            R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground,
-            R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground};
+    int[] icon={R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground,
+            R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground,
+            R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground};
     String[] name;
 
 
@@ -27,16 +35,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Dashboard");
 
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
-        name = getResources().getStringArray(R.array.dashboard);
+        recyclerView=findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
 
-        CustomAdapter adapter = new CustomAdapter(this, icon, name);
+        name=new String[9];
+        name=getResources().getStringArray(R.array.dashboard);/*GET NAME FROM STRING RESOURCES*/
+
+        CustomAdapter adapter= new CustomAdapter(this,icon,name);
         recyclerView.setAdapter(adapter);
 
 
@@ -44,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
-        LayoutInflater inflate;
         Context context;
         int[] icon;
         String[] name;
@@ -66,13 +74,52 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            try {
-                holder.imageView.setImageResource(icon[position]);
-                holder.textView.setText(name[position]);
-            } catch (Exception e) {
+        public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+            holder.imageView.setImageResource(icon[position]);
+            holder.textView.setText(name[position]);
+            holder.cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    switch (position){
+                        case 0:
+                            //career plannig map
+                            startActivity(new Intent(MainActivity.this,CareerPlanningMap.class));
 
-            }
+                            break;
+
+                        case 1:
+                            //self assessment
+                            startActivity(new Intent(MainActivity.this,SelfAssessment.class));
+
+
+                            break;
+                        case 3:
+                            break;
+
+                        case 4:
+                            break;
+
+                            case 5:
+
+                            break;
+
+                        case 6:
+                            break;
+                         case 7:
+                             startActivity(new Intent(MainActivity.this,Feedback.class));
+
+                             break;
+
+                        case 8:
+
+                            startActivity(new Intent(MainActivity.this,ContactUs.class));
+
+                            break;
+
+                    }
+                }
+            });
+
 
         }
 
@@ -81,17 +128,21 @@ public class MainActivity extends AppCompatActivity {
             return name.length;
         }
 
-        class ViewHolder extends RecyclerView.ViewHolder {
+         class ViewHolder extends RecyclerView.ViewHolder{
 
             ImageView imageView;
             TextView textView;
-
-            ViewHolder(@NonNull View itemView) {
+            CardView cardView;
+             ViewHolder(@NonNull View itemView) {
                 super(itemView);
-                imageView = itemView.findViewById(R.id.imageViewId);
-                textView = itemView.findViewById(R.id.textViewId);
+                imageView=itemView.findViewById(R.id.imageViewId);
+                textView=itemView.findViewById(R.id.textViewId);
+                cardView=itemView.findViewById(R.id.cardView);
 
             }
         }
+
+
+
     }
 }
