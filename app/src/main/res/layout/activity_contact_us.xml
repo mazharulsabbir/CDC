@@ -8,10 +8,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp">
 
-        <ImageView
-            android:id="@+id/imageView2"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -31,10 +32,10 @@
             android:text="Phone\n88-02-8310864, Ext. 400"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/fab_phone" />
 
-        <ImageView
-            android:id="@+id/imageView3"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_call"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -54,10 +55,11 @@
             android:text="Phone\n8801991195535"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintTop_toBottomOf="@+id/fab_call" />
 
-        <ImageView
-            android:id="@+id/imageView4"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+            android:id="@+id/fab_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -74,14 +76,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:gravity="center"
-            android:textIsSelectable="true"
             android:text="E-mail \ncdc@daffodilvarsity.edu.bd"
+            android:textIsSelectable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+            app:layout_constraintTop_toBottomOf="@+id/fab_email" />
 
-        <ImageView
-            android:id="@+id/imageView"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -103,7 +105,7 @@
             android:text="Career Development Center (CDC)\nDaffodil International University (DIU)\nDaffodil Tower, 4/2 Sobhanbag, Dhanmondi, Dhaka-1207, Bangladesh"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/fab_location" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>
