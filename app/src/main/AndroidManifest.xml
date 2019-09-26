@@ -5,6 +5,7 @@
     package="edu.daffodil.cdc">
 
     <dist:module dist:instant="true" />
+    <dist:module dist:instant="true" />
 
     <application
         android:allowBackup="true"
@@ -14,32 +15,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <activity android:name=".SelfAssessment"
-            android:theme="@style/dashboard"/>
-
-        <activity android:name=".ContactUs"
-            android:parentActivityName=".MainActivity"/>
-
-        <activity android:name=".Feedback"
-            android:parentActivityName=".MainActivity"/>
-
+        <activity android:name=".JobNotice"></activity>
+        <activity
+            android:name=".SelfAssessment"
+            android:theme="@style/dashboard" />
+        <activity
+            android:name=".ContactUs"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Feedback"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".CareerPlanningMap"
             android:theme="@style/dashboard" />
-
-        <activity android:name=".UsefulLinks"/>
-
+        <activity android:name=".UsefulLinks" />
         <activity android:name=".Announcements" />
-
         <activity android:name=".CareerOptionActivity" />
-
         <activity
             android:name=".MainActivity"
             android:theme="@style/dashboard">
-
             <intent-filter>
-
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -47,7 +42,4 @@
         </activity>
     </application>
 
-    <dist:module dist:instant="true" />
-
 </manifest>
-

@@ -25,9 +25,9 @@ import java.util.zip.Inflater;
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
-    int[] icon={R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground,
-            R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground,
-            R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground};
+    int[] icon = {R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground,
+            R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground,
+            R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground};
     String[] name;
 
 
@@ -35,17 +35,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar=findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Dashboard");
 
-        recyclerView=findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
-        name=new String[9];
-        name=getResources().getStringArray(R.array.dashboard);/*GET NAME FROM STRING RESOURCES*/
+        name = new String[9];
+        name = getResources().getStringArray(R.array.dashboard);/*GET NAME FROM STRING RESOURCES*/
 
-        CustomAdapter adapter= new CustomAdapter(this,icon,name);
+        CustomAdapter adapter = new CustomAdapter(this, icon, name);
         recyclerView.setAdapter(adapter);
 
 
@@ -80,42 +80,43 @@ public class MainActivity extends AppCompatActivity {
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    switch (position){
+                    switch (position) {
                         case 0:
                             //career plannig map
-                            startActivity(new Intent(MainActivity.this,CareerPlanningMap.class));
+                            startActivity(new Intent(MainActivity.this, CareerPlanningMap.class));
 
                             break;
 
                         case 1:
                             //self assessment
-                            startActivity(new Intent(MainActivity.this,SelfAssessment.class));
+                            startActivity(new Intent(MainActivity.this, SelfAssessment.class));
 
 
                             break;
                         case 3:
-                            startActivity(new Intent(MainActivity.this,CareerOptionActivity.class));
+                            startActivity(new Intent(MainActivity.this, CareerOptionActivity.class));
                             break;
 
                         case 4:
-
+                            startActivity(new Intent(MainActivity.this,JobNotice.class));
                             break;
 
-                            case 5:
-                                startActivity(new Intent(MainActivity.this,Announcements.class));
+                        case 5:
+                            startActivity(new Intent(MainActivity.this, Announcements.class));
                             break;
 
                         case 6:
-                            startActivity(new Intent(MainActivity.this,UsefulLinks.class));
+                            startActivity(new Intent(MainActivity.this, UsefulLinks.class));
                             break;
-                         case 7:
-                             startActivity(new Intent(MainActivity.this,Feedback.class));
 
-                             break;
+                        case 7:
+                            startActivity(new Intent(MainActivity.this, Feedback.class));
+
+                            break;
 
                         case 8:
 
-                            startActivity(new Intent(MainActivity.this,ContactUs.class));
+                            startActivity(new Intent(MainActivity.this, ContactUs.class));
 
                             break;
 
@@ -131,20 +132,20 @@ public class MainActivity extends AppCompatActivity {
             return name.length;
         }
 
-         class ViewHolder extends RecyclerView.ViewHolder{
+        class ViewHolder extends RecyclerView.ViewHolder {
 
             ImageView imageView;
             TextView textView;
             CardView cardView;
-             ViewHolder(@NonNull View itemView) {
+
+            ViewHolder(@NonNull View itemView) {
                 super(itemView);
-                imageView=itemView.findViewById(R.id.imageViewId);
-                textView=itemView.findViewById(R.id.textViewId);
-                cardView=itemView.findViewById(R.id.cardView);
+                imageView = itemView.findViewById(R.id.imageViewId);
+                textView = itemView.findViewById(R.id.textViewId);
+                cardView = itemView.findViewById(R.id.cardView);
 
             }
         }
-
 
 
     }
