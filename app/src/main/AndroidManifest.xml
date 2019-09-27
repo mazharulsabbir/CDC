@@ -15,7 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".JobNotice"></activity>
+        <activity
+            android:name=".JobNotice"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".SelfAssessment"
             android:theme="@style/dashboard" />
@@ -28,9 +30,15 @@
         <activity
             android:name=".CareerPlanningMap"
             android:theme="@style/dashboard" />
-        <activity android:name=".UsefulLinks" />
-        <activity android:name=".Announcements" />
-        <activity android:name=".CareerOptionActivity" />
+        <activity
+            android:name=".UsefulLinks"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".Announcements"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".CareerOptionActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainActivity"
             android:theme="@style/dashboard">
