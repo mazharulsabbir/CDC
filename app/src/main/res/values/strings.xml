@@ -1,17 +1,6 @@
 <resources>
     <string name="app_name">CDC</string>
-    <string name="writing_your_cv">1.Guide to writing your CV (PDF)</string>
-    <string name="tailor_your_cv">2.How to tailor your CV (PDF)</string>
-    <string name="_3_interview_preparation">3.Interview Preparation Checklist (PDF)</string>
-    <string name="improving_your_linkedin_profile">4.Building and improving your LinkedIn profile</string>
-    <string name="_5_preparing_for_an_interview">5.Preparing for an interview</string>
-    <string name="_6_best_cover_letters">6.Best Cover Letters</string>
-    <string name="_7_free_resume_samples_amp_examples"><![CDATA[7.Free Resume Samples & Examples]]></string>
-    <string name="_8_employability_360_channel">8.Employability 360 Channel</string>
-    <string name="_9_video_resume_demo">9.Video Resume Demo</string>
-    <string name="resume_preparation">10.Guideline on Video Resume preparation (PDF)</string>
-    <string name="_11_cv_vs_r_sum">11.CV vs Résumé</string>
-    <string name="_interview_question_and_answer">14.Introduce yourself Common interview question and answer</string>
+
 
     <string-array name="depertmentList">
         <item>CSE</item>

@@ -1,6 +1,8 @@
 package edu.daffodil.cdc;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -8,7 +10,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.ArrayList;
+
+import edu.daffodil.cdc.Adapters.LinkAdapter;
+
 public class UsefulLinks extends AppCompatActivity {
+    private RecyclerView linkRV;
+    private LinkAdapter linkAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,93 +27,43 @@ public class UsefulLinks extends AppCompatActivity {
             getSupportActionBar().setTitle("Useful links");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        linkRV = findViewById(R.id.linkRV);
+
+        linkAdapter = new LinkAdapter(this,getUsefulLinks());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        linkRV.setLayoutManager(layoutManager);
+        linkRV.setAdapter(linkAdapter);
+
+
+
     }
 
-    public void Link1(View view) {
-       String url = "https://cdc.daffodilvarsity.edu.bd/images/home/Guide-to-writing-your_CV.pdf";
-       LinkIntent(url);
+    private ArrayList<UsefulLinkHelper> getUsefulLinks(){
+        ArrayList<UsefulLinkHelper> linkList = new ArrayList<>();
+        linkList.add(new UsefulLinkHelper("Guide to writing your CV (PDF)","https://cdc.daffodilvarsity.edu.bd/images/home/Guide-to-writing-your_CV.pdf"));
+        linkList.add(new UsefulLinkHelper("How to tailor your CV (PDF)","https://cdc.daffodilvarsity.edu.bd/images/home/How-to-tailor-your-CV.pdf"));
+        linkList.add(new UsefulLinkHelper("Interview Preparation Checklist (PDF)","https://cdc.daffodilvarsity.edu.bd/images/home/Interview-checklist.pdf"));
+        linkList.add(new UsefulLinkHelper("Building and improving your LinkedIn profile","https://cdc.daffodilvarsity.edu.bd/images/home/LinkedIn-profile.pdf"));
+        linkList.add(new UsefulLinkHelper("Preparing for an interview","https://cdc.daffodilvarsity.edu.bd/images/home/Preparing-for-an-interview.pdf"));
+        linkList.add(new UsefulLinkHelper("Best Cover Letters","http://www.bestcoverletters.com/"));
+        linkList.add(new UsefulLinkHelper("Free Resume Samples & Examples","https://www.livecareer.com/resumes/samples"));
+        linkList.add(new UsefulLinkHelper("Employability 360 Channel","https://www.youtube.com/channel/UCTPyiQe9BjUkp5xxLsVDCcA/videos"));
+        linkList.add(new UsefulLinkHelper("Video Resume Demo","https://www.youtube.com/watch?v=oRBKNk-AXvw&t=1s"));
+        linkList.add(new UsefulLinkHelper("Guideline on Video Resume preparation (PDF)-","https://cdc.daffodilvarsity.edu.bd/images/home/Guideline-for-VideoResume.pdf"));
+        linkList.add(new UsefulLinkHelper("CV vs Résumé ","https://www.youtube.com/watch?v=F50XNq8yaZ0"));
+        linkList.add(new UsefulLinkHelper("Corporate Grooming/Formal etiquette for job","https://www.youtube.com/watch?v=hzm5OIOrwNs"));
+        linkList.add(new UsefulLinkHelper("How to write a CV/Résume","https://www.youtube.com/watch?v=3klRgz1F6fE"));
+        linkList.add(new UsefulLinkHelper("Introduce yourself Common interview question and answer","https://www.youtube.com/watch?v=CR7nV2KkLds"));
+        linkList.add(new UsefulLinkHelper("How to prepare CV by Prothom Alo","https://www.prothomalo.com/education/article/1558674/%E0%A6%95%E0%A7%80%E0%A6%AD%E0%A6%BE%E0%A6%AC%E0%A7%87-" +
+                "%E0%A6%B8%E0%A6%BF%E0%A6%AD%E0%A6%BF-%E0%A6%A4%E0%A7%88%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A6%B0%E0%A6%AC"));
+        linkList.add(new UsefulLinkHelper("Career related Articles","https://docs.google.com/document/d/14SAlKfB5-DB2EwMS53pXrfHnHDbsXraEZ4ST6T_eRmQ/edit"));
+
+        return linkList;
+
+
     }
 
-    public void Link2(View view) {
-        String url = "https://cdc.daffodilvarsity.edu.bd/images/home/How-to-tailor-your-CV.pdf";
-        LinkIntent(url);
-
-    }
-
-    public void Link3(View view) {
-        String url = "https://cdc.daffodilvarsity.edu.bd/images/home/Interview-checklist.pdf";
-        LinkIntent(url);
-    }
-
-    public void Link4(View view) {
-        String url = "https://cdc.daffodilvarsity.edu.bd/images/home/LinkedIn-profile.pdf";
-        LinkIntent(url);
-    }
-
-    public void Link5(View view) {
-        String url = "https://cdc.daffodilvarsity.edu.bd/images/home/Preparing-for-an-interview.pdf";
-        LinkIntent(url);
-    }
-
-    public void Link6(View view) {
-        String url = "http://www.bestcoverletters.com/";
-        LinkIntent(url);
-    }
-
-    public void Link7(View view) {
-        String url = "https://www.livecareer.com/resumes/samples";
-        LinkIntent(url);
-    }
-
-    public void Link8(View view) {
-        String url = "https://www.youtube.com/channel/UCTPyiQe9BjUkp5xxLsVDCcA/videos";
-        LinkIntent(url);
-    }
-
-    public void Link9(View view) {
-        String url = "https://www.youtube.com/watch?v=oRBKNk-AXvw&t=1s";
-        LinkIntent(url);
-    }
-
-    public void Link10(View view) {
-        String url = "https://cdc.daffodilvarsity.edu.bd/images/home/Guideline-for-VideoResume.pdf";
-        LinkIntent(url);
-    }
-
-    public void Link11(View view) {
-        String url = "https://www.youtube.com/watch?v=F50XNq8yaZ0";
-        LinkIntent(url);
-    }
-
-    public void Link12(View view) {
-        String url = "https://www.youtube.com/watch?v=hzm5OIOrwNs";
-        LinkIntent(url);
-    }
-
-    public void Link13(View view) {
-        String url = "https://www.youtube.com/watch?v=3klRgz1F6fE";
-        LinkIntent(url);
-    }
-
-    public void Link14(View view) {
-        String url = "https://www.youtube.com/watch?v=CR7nV2KkLds";
-        LinkIntent(url);
-    }
-
-    public void Link15(View view) {
-        String url = "https://www.prothomalo.com/education/article/1558674/%E0%A6%95%E0%A7%80%E0%A6%AD%E0%A6%BE%E0%A6%AC%E0%A7%87-%E0%A6%B8%E0%A6%BF%E0%A6%AD%E0%A6%BF-%E0%A6%A4%E0%A7%88%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A6%B0%E0%A6%AC";
-        LinkIntent(url);
-    }
-
-    public void Link16(View view) {
-        String url = "https://docs.google.com/document/d/14SAlKfB5-DB2EwMS53pXrfHnHDbsXraEZ4ST6T_eRmQ/edit";
-        LinkIntent(url);
-    }
-
-    private void LinkIntent(String url) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        startActivity(intent);
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
