@@ -1,6 +1,8 @@
 package edu.daffodil.cdc.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,11 +33,14 @@ public class LinkAdapter extends RecyclerView.Adapter<LinkAdapter.LinkViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LinkViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final LinkViewHolder holder, final int position) {
         holder.linkName.setText(linkList.get(position).getTitle());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkList.get(position).getUrl()));
+                context.startActivity(intent);
 
             }
         });
