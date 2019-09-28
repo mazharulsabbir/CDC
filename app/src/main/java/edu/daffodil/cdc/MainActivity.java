@@ -1,5 +1,14 @@
 package edu.daffodil.cdc;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -7,28 +16,13 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.zip.Inflater;
-
 public class MainActivity extends AppCompatActivity {
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
-    int[] icon = {R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground,
+    private int[] icon = {R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground,
             R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground,
             R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground};
-    String[] name;
+    private String[] name;
 
 
     @Override
@@ -58,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         String[] name;
 
 
-        public CustomAdapter(Context context, int[] icon, String[] name) {
+        CustomAdapter(Context context, int[] icon, String[] name) {
             this.context = context;
             this.icon = icon;
             this.name = name;
@@ -82,42 +76,48 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     switch (position) {
                         case 0:
-                            //career plannig map
+                            //career planning map
                             startActivity(new Intent(MainActivity.this, CareerPlanningMap.class));
-
                             break;
 
                         case 1:
                             //self assessment
                             startActivity(new Intent(MainActivity.this, SelfAssessment.class));
-
-
                             break;
+
+                        case 2:
+                            /*SCHEDULE AN APPOINTMENT*/
+                            startActivity(new Intent(MainActivity.this, AppointmentScheduling.class));
+                            break;
+
                         case 3:
+                            /*CAREER OPTION*/
                             startActivity(new Intent(MainActivity.this, CareerOptionActivity.class));
                             break;
 
                         case 4:
-                            startActivity(new Intent(MainActivity.this,JobNotice.class));
+                            /*JOB NOTICE*/
+                            startActivity(new Intent(MainActivity.this, JobNotice.class));
                             break;
 
                         case 5:
+                            /*ANNOUNCEMENT*/
                             startActivity(new Intent(MainActivity.this, Announcements.class));
                             break;
 
                         case 6:
+                            /*USEFUL LINKS*/
                             startActivity(new Intent(MainActivity.this, UsefulLinks.class));
                             break;
 
                         case 7:
+                            /*FEEDBACK*/
                             startActivity(new Intent(MainActivity.this, Feedback.class));
-
                             break;
 
                         case 8:
-
+                            /*CONTACT US*/
                             startActivity(new Intent(MainActivity.this, ContactUs.class));
-
                             break;
 
                     }

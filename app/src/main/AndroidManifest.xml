@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="edu.daffodil.cdc">
 
-    <dist:module dist:instant="true" />
-    <dist:module dist:instant="true" />
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,9 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name=".JobNotice"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".AppointmentScheduling"/>
         <activity
             android:name=".SelfAssessment"
             android:theme="@style/dashboard" />
@@ -27,6 +23,9 @@
         <activity
             android:name=".Feedback"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".JobNotice"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".CareerPlanningMap"
             android:theme="@style/dashboard" />
@@ -48,6 +47,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
+
+    <dist:module dist:instant="true" />
 
 </manifest>
