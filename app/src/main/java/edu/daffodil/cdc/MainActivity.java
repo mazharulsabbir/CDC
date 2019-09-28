@@ -17,12 +17,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
+    RecyclerView recyclerView;
 
-    private int[] icon = {R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground,
-            R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground,
-            R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground};
-    private String[] name;
+    int[] icon = {R.drawable.career_planning, R.drawable.self_assessment, R.drawable.schedule_appointment,
+            R.drawable.career_option, R.drawable.briefcase_96px, R.drawable.ic_announcement,
+            R.drawable.link_104px, R.drawable.feedback_100px, R.drawable.phone_96px};
+    String[] name;
 
 
     @Override
