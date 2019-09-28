@@ -1,6 +1,7 @@
 package edu.daffodil.cdc;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -76,10 +77,11 @@ public class AppointmentScheduling extends AppCompatActivity implements View.OnC
 
     private void submitRequest() {
         boolean emptyString = false;
-        String name = "", email = "", appointmentReason = "";
+        String name = "", email = "", date = "", appointmentReason = "";
 
         name = userName.getEditText().getText().toString().trim();
         email = userEmail.getEditText().getText().toString().trim();
+        date = appointmentDate.getEditText().getText().toString().trim();
         appointmentReason = userMessage.getEditText().getText().toString().trim();
 
         if (name.length() == 0) {
@@ -98,6 +100,14 @@ public class AppointmentScheduling extends AppCompatActivity implements View.OnC
             userEmail.setErrorEnabled(false);
         }
 
+        if (date.length() == 0) {
+            appointmentDate.setErrorEnabled(true);
+            appointmentDate.setError("This field is required!");
+            emptyString = true;
+        } else {
+            appointmentDate.setErrorEnabled(false);
+        }
+
         if (appointmentReason.length() == 0) {
             userMessage.setErrorEnabled(true);
             userMessage.setError("This field is required!");
@@ -109,6 +119,29 @@ public class AppointmentScheduling extends AppCompatActivity implements View.OnC
         if (emptyString)
             return;
 
+
+        sendMail(name,email,date,appointmentReason);
+
+
+    }
+
+    private void sendMail(String name, String email, String date, String appointmentReason) {
+        String msg = "Name: "+name+
+                "\nEmail: "+email+
+                "\nDate: "+date+
+                "\nReason: "+appointmentReason;
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+
+        String[] strTo = {"ncdc@daffodilvarsity.edu.bd"};
+
+        intent.putExtra(Intent.EXTRA_EMAIL, strTo);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "CDC App Contact");
+        intent.putExtra(Intent.EXTRA_TEXT, msg);
+
+        intent.setType("message/rfc822");
+        intent.setPackage("com.google.android.gm");
+        startActivity(intent);
     }
 
     @Override

@@ -48,7 +48,6 @@ public class ContactUs extends AppCompatActivity implements View.OnClickListener
     }
 
     private void actionLocation() {
-//        Sobhanbag Rd, Dhaka 1215
         Uri mapUri = Uri.parse("geo:0,0?q=" + Uri.encode("Sobhanbag Rd, Dhaka 1215"));
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, mapUri);
         mapIntent.setPackage("com.google.android.apps.maps");
@@ -68,9 +67,13 @@ public class ContactUs extends AppCompatActivity implements View.OnClickListener
     }
 
     private void actionCall(String number) {
-        Intent intent = new Intent(Intent.ACTION_CALL);
-        intent.setData(Uri.parse("tel:" + number));
-        startActivity(intent);
+        try{
+            Intent intent = new Intent(Intent.ACTION_CALL);
+            intent.setData(Uri.parse("tel:" + number));
+            startActivity(intent);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override

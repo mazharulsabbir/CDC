@@ -1,5 +1,6 @@
 package edu.daffodil.cdc;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,7 +41,7 @@ public class Feedback extends AppCompatActivity {
                     userName.setErrorEnabled(true);
                     userName.setError("This field is required!");
                     emptyString = true;
-                }else{
+                } else {
                     userName.setErrorEnabled(false);
                 }
 
@@ -48,7 +49,7 @@ public class Feedback extends AppCompatActivity {
                     userEmail.setErrorEnabled(true);
                     userEmail.setError("This field is required!");
                     emptyString = true;
-                }else{
+                } else {
                     userEmail.setErrorEnabled(false);
                 }
 
@@ -56,7 +57,7 @@ public class Feedback extends AppCompatActivity {
                     userFeedBack.setErrorEnabled(true);
                     userFeedBack.setError("This field is required!");
                     emptyString = true;
-                }else{
+                } else {
                     userFeedBack.setErrorEnabled(false);
                 }
 
@@ -69,7 +70,21 @@ public class Feedback extends AppCompatActivity {
     }
 
     private void sendFeedBack(String name, String email, String feedback) {
+        String msg = "Name: " + name +
+                "\nEmail: " + email +
+                "\nFeedback: " + feedback;
 
+        Intent intent = new Intent(Intent.ACTION_SEND);
+
+        String[] strTo = {"ncdc@daffodilvarsity.edu.bd"};
+
+        intent.putExtra(Intent.EXTRA_EMAIL, strTo);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "CDC App Contact");
+        intent.putExtra(Intent.EXTRA_TEXT, msg);
+
+        intent.setType("message/rfc822");
+        intent.setPackage("com.google.android.gm");
+        startActivity(intent);
     }
 
     @Override
