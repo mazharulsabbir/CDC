@@ -1,6 +1,7 @@
 package edu.daffodil.cdc;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -69,5 +70,15 @@ public class Feedback extends AppCompatActivity {
 
     private void sendFeedBack(String name, String email, String feedback) {
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home) {
+            super.onBackPressed();
+            return true;
+        } else
+            return super.onOptionsItemSelected(item);
     }
 }

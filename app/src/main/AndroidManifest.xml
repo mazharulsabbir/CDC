@@ -13,31 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AppointmentScheduling"/>
+        <activity android:name=".AppointmentScheduling" />
         <activity
             android:name=".SelfAssessment"
             android:theme="@style/dashboard" />
-        <activity
-            android:name=".ContactUs"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".Feedback"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".JobNotice"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ContactUs" />
+        <activity android:name=".Feedback" />
+        <activity android:name=".JobNotice" />
         <activity
             android:name=".CareerPlanningMap"
             android:theme="@style/dashboard" />
-        <activity
-            android:name=".UsefulLinks"
-            android:parentActivityName=".MainActivity"/>
-        <activity
-            android:name=".Announcements"
-            android:parentActivityName=".MainActivity"/>
-        <activity
-            android:name=".CareerOptionActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".UsefulLinks" />
+        <activity android:name=".Announcements" />
+        <activity android:name=".CareerOptionActivity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/dashboard">

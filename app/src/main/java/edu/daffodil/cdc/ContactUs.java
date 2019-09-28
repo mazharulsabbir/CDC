@@ -3,6 +3,7 @@ package edu.daffodil.cdc;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -70,5 +71,15 @@ public class ContactUs extends AppCompatActivity implements View.OnClickListener
         Intent intent = new Intent(Intent.ACTION_CALL);
         intent.setData(Uri.parse("tel:" + number));
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home) {
+            super.onBackPressed();
+            return true;
+        } else
+            return super.onOptionsItemSelected(item);
     }
 }

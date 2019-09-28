@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 public class UsefulLinks extends AppCompatActivity {
@@ -104,5 +105,15 @@ public class UsefulLinks extends AppCompatActivity {
     private void LinkIntent(String url) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home) {
+            super.onBackPressed();
+            return true;
+        } else
+            return super.onOptionsItemSelected(item);
     }
 }

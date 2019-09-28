@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import edu.daffodil.cdc.Adapters.AnnounceAdapters;
 
@@ -24,5 +25,15 @@ public class Announcements extends AppCompatActivity {
 
         annoucementRV = findViewById(R.id.announceRV);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home) {
+            super.onBackPressed();
+            return true;
+        } else
+            return super.onOptionsItemSelected(item);
     }
 }

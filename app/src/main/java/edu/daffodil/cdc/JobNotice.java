@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 public class JobNotice extends AppCompatActivity {
 
@@ -20,5 +21,15 @@ public class JobNotice extends AppCompatActivity {
         }
 
         jobNoticeRV = findViewById(R.id.jobNoticeRV);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home) {
+            super.onBackPressed();
+            return true;
+        } else
+            return super.onOptionsItemSelected(item);
     }
 }
