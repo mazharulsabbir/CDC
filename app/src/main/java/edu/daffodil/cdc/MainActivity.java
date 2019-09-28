@@ -16,6 +16,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
@@ -32,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Dashboard");
+
+        CollapsingToolbarLayout layout  = findViewById(R.id.collapsing_toolbar);
+        layout.setTitleEnabled(true);
+        layout.setTitle("Dashboard");
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));

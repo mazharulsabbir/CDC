@@ -8,9 +8,13 @@ import android.widget.DatePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.Calendar;
 
 public class AppointmentScheduling extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
+
+    private TextInputLayout userName, userEmail, userMessage, appointmentDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +25,11 @@ public class AppointmentScheduling extends AppCompatActivity implements View.OnC
             getSupportActionBar().setTitle("Appointment Scheduling");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        userName = findViewById(R.id.user_name);
+        userEmail = findViewById(R.id.email_address);
+        userMessage = findViewById(R.id.describe_reason);
+        appointmentDate = findViewById(R.id.appointment_date);
 
         findViewById(R.id.submit_appointment_form).setOnClickListener(this);
         findViewById(R.id.date_picker_btn).setOnClickListener(this);
@@ -66,11 +75,45 @@ public class AppointmentScheduling extends AppCompatActivity implements View.OnC
     }
 
     private void submitRequest() {
+        boolean emptyString = false;
+        String name = "", email = "", appointmentReason = "";
+
+        name = userName.getEditText().getText().toString().trim();
+        email = userEmail.getEditText().getText().toString().trim();
+        appointmentReason = userMessage.getEditText().getText().toString().trim();
+
+        if (name.length() == 0) {
+            userName.setErrorEnabled(true);
+            userName.setError("This field is required!");
+            emptyString = true;
+        } else {
+            userName.setErrorEnabled(false);
+        }
+
+        if (email.length() == 0) {
+            userEmail.setErrorEnabled(true);
+            userEmail.setError("This field is required!");
+            emptyString = true;
+        } else {
+            userEmail.setErrorEnabled(false);
+        }
+
+        if (appointmentReason.length() == 0) {
+            userMessage.setErrorEnabled(true);
+            userMessage.setError("This field is required!");
+            emptyString = true;
+        } else {
+            userMessage.setErrorEnabled(false);
+        }
+
+        if (emptyString)
+            return;
 
     }
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
+        String date = dayOfMonth + " / " + month + " / " + year;
+        appointmentDate.getEditText().setText(date);
     }
 }
