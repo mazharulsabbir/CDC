@@ -32,7 +32,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="c name"
             android:textSize="14sp"
             android:textStyle="bold"
             android:transitionName="company_name"
@@ -45,7 +44,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:text="job name"
             android:textStyle="bold"
             android:transitionName="vacancy_name"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +56,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="location"
             android:transitionName="company_location"
             app:layout_constraintStart_toStartOf="@+id/job_vacancy_name"
             app:layout_constraintTop_toBottomOf="@+id/job_company_name" />
@@ -76,12 +73,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
+            android:drawableStart="@drawable/ic_date"
             android:drawablePadding="4dp"
             android:gravity="center_vertical"
-            android:text="768"
             android:textColor="@color/colorAccent"
-            app:layout_constraintEnd_toStartOf="@+id/menu_share_job"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/job_salary"
             app:layout_constraintTop_toBottomOf="@+id/job_salary" />
 
@@ -90,7 +87,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="5 yr"
             app:layout_constraintStart_toStartOf="@+id/job_location"
             app:layout_constraintTop_toBottomOf="@+id/job_location" />
 
@@ -103,7 +99,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/job_dead_line"
             app:layout_constraintTop_toBottomOf="@+id/job_dead_line" />
-
+<!--
         <ImageButton
             android:id="@+id/menu_favorite"
             android:layout_width="wrap_content"
@@ -153,7 +149,7 @@
             android:foreground="?attr/selectableItemBackground"
             android:src="@drawable/ic_share_black_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/view7" />
+            app:layout_constraintEnd_toStartOf="@+id/view7" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
