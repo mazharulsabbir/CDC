@@ -73,11 +73,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
+            android:drawableStart="@drawable/ic_date"
             android:drawablePadding="4dp"
             android:gravity="center_vertical"
             android:textColor="@color/colorAccent"
-            app:layout_constraintEnd_toStartOf="@+id/menu_share_job"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/job_salary"
             app:layout_constraintTop_toBottomOf="@+id/job_salary" />
 
@@ -98,7 +99,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/job_dead_line"
             app:layout_constraintTop_toBottomOf="@+id/job_dead_line" />
-
+<!--
         <ImageButton
             android:id="@+id/menu_favorite"
             android:layout_width="wrap_content"
@@ -148,7 +149,7 @@
             android:foreground="?attr/selectableItemBackground"
             android:src="@drawable/ic_share_black_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/view7" />
+            app:layout_constraintEnd_toStartOf="@+id/view7" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -2,6 +2,17 @@
     <string name="app_name">CDC</string>
 
 
+    <string-array name="depertmentList">
+        <item>CSE</item>
+        <item>SWE</item>
+        <item>TE</item>
+        <item>BBA</item>
+        <item>ETE</item>
+        <item>CE</item>
+        <item>CIS</item>
+        <item>GED</item>
+    </string-array>
+
     <string-array name="dashboard">
         <item>Career Planning Map</item>
         <item>Self Assessment</item>

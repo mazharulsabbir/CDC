@@ -1,6 +1,7 @@
 package edu.daffodil.cdc;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -57,5 +58,15 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
 
     private void checkAnswer() {
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home) {
+            super.onBackPressed();
+            return true;
+        } else
+            return super.onOptionsItemSelected(item);
     }
 }

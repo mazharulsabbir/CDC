@@ -1,5 +1,14 @@
 package edu.daffodil.cdc;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -7,27 +16,16 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.zip.Inflater;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
-    int[] icon={R.drawable.career_planning,R.drawable.self_assessment,R.drawable.schedule_appointment,
-            R.drawable.career_option,R.drawable.briefcase_96px,R.drawable.ic_announcement,
-            R.drawable.link_104px,R.drawable.feedback_100px,R.drawable.phone_96px};
+
+    int[] icon = {R.drawable.career_planning, R.drawable.self_assessment, R.drawable.schedule_appointment,
+            R.drawable.career_option, R.drawable.briefcase_96px, R.drawable.ic_announcement,
+            R.drawable.link_104px, R.drawable.feedback_100px,R.drawable.phone_96px};
+
     String[] name;
 
 
@@ -35,17 +33,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar=findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Dashboard");
 
-        recyclerView=findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        CollapsingToolbarLayout layout  = findViewById(R.id.collapsing_toolbar);
+        layout.setTitleEnabled(true);
+        layout.setTitle("Dashboard");
 
-        name=new String[9];
-        name=getResources().getStringArray(R.array.dashboard);/*GET NAME FROM STRING RESOURCES*/
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
-        CustomAdapter adapter= new CustomAdapter(this,icon,name);
+        name = new String[9];
+        name = getResources().getStringArray(R.array.dashboard);/*GET NAME FROM STRING RESOURCES*/
+
+        CustomAdapter adapter = new CustomAdapter(this, icon, name);
         recyclerView.setAdapter(adapter);
 
 
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         String[] name;
 
 
-        public CustomAdapter(Context context, int[] icon, String[] name) {
+        CustomAdapter(Context context, int[] icon, String[] name) {
             this.context = context;
             this.icon = icon;
             this.name = name;
@@ -80,40 +82,50 @@ public class MainActivity extends AppCompatActivity {
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    switch (position){
+                    switch (position) {
                         case 0:
-                            //career plannig map
-                            startActivity(new Intent(MainActivity.this,CareerPlanningMap.class));
-
+                            //career planning map
+                            startActivity(new Intent(MainActivity.this, CareerPlanningMap.class));
                             break;
 
                         case 1:
                             //self assessment
-                            startActivity(new Intent(MainActivity.this,SelfAssessment.class));
-
-
+                            startActivity(new Intent(MainActivity.this, SelfAssessment.class));
                             break;
+
+                        case 2:
+                            /*SCHEDULE AN APPOINTMENT*/
+                            startActivity(new Intent(MainActivity.this, AppointmentScheduling.class));
+                            break;
+
                         case 3:
+                            /*CAREER OPTION*/
+                            startActivity(new Intent(MainActivity.this, CareerOptionActivity.class));
                             break;
 
                         case 4:
+                            /*JOB NOTICE*/
+                            startActivity(new Intent(MainActivity.this, JobNotice.class));
                             break;
 
-                            case 5:
-
+                        case 5:
+                            /*ANNOUNCEMENT*/
+                            startActivity(new Intent(MainActivity.this, Announcements.class));
                             break;
 
                         case 6:
+                            /*USEFUL LINKS*/
+                            startActivity(new Intent(MainActivity.this, UsefulLinks.class));
                             break;
-                         case 7:
-                             startActivity(new Intent(MainActivity.this,Feedback.class));
 
-                             break;
+                        case 7:
+                            /*FEEDBACK*/
+                            startActivity(new Intent(MainActivity.this, Feedback.class));
+                            break;
 
                         case 8:
-
-                            startActivity(new Intent(MainActivity.this,ContactUs.class));
-
+                            /*CONTACT US*/
+                            startActivity(new Intent(MainActivity.this, ContactUs.class));
                             break;
 
                     }
@@ -128,20 +140,20 @@ public class MainActivity extends AppCompatActivity {
             return name.length;
         }
 
-         class ViewHolder extends RecyclerView.ViewHolder{
+        class ViewHolder extends RecyclerView.ViewHolder {
 
             ImageView imageView;
             TextView textView;
             CardView cardView;
-             ViewHolder(@NonNull View itemView) {
+
+            ViewHolder(@NonNull View itemView) {
                 super(itemView);
-                imageView=itemView.findViewById(R.id.imageViewId);
-                textView=itemView.findViewById(R.id.textViewId);
-                cardView=itemView.findViewById(R.id.cardView);
+                imageView = itemView.findViewById(R.id.imageViewId);
+                textView = itemView.findViewById(R.id.textViewId);
+                cardView = itemView.findViewById(R.id.cardView);
 
             }
         }
-
 
 
     }
