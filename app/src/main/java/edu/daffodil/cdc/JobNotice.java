@@ -1,15 +1,18 @@
 package edu.daffodil.cdc;
 
+import android.annotation.SuppressLint;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 import edu.daffodil.cdc.Adapters.JobNoticeAdapter;
@@ -17,8 +20,6 @@ import edu.daffodil.cdc.RESTApi.AllJobs;
 import edu.daffodil.cdc.RESTApi.JobsData;
 import edu.daffodil.cdc.RESTApi.JsonPlaceHolderApi;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -47,43 +48,8 @@ public class JobNotice extends AppCompatActivity {
 
         mRecyclerViewJobs.setHasFixedSize(true);
 
-        getResponse();
-    }
+        new JobNoticeApiCall().execute();
 
-    private void getResponse() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(JsonPlaceHolderApi.BASE_JOBS_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        JsonPlaceHolderApi api = retrofit.create(JsonPlaceHolderApi.class);
-
-        Call<AllJobs> call = api.getAllJobs();
-        call.enqueue(new Callback<AllJobs>() {
-                         @Override
-                         public void onResponse(Call<AllJobs> call, Response<AllJobs> response) {
-                             if (!response.isSuccessful()) {
-                                 Log.i(TAG, "onResponse: " + response.message() + ":" + response.code());
-                                 Toast.makeText(JobNotice.this, response.code(), Toast.LENGTH_SHORT).show();
-                                 return;
-                             }
-
-                             data = new ArrayList<>();
-                             limitedData = new ArrayList<>();
-
-                             data = response.body().getJobsData();
-                             jobNoticeAdapter = new JobNoticeAdapter(JobNotice.this, data);
-
-                             mRecyclerViewJobs.setAdapter(jobNoticeAdapter);
-                         }
-
-                         @Override
-                         public void onFailure(Call<AllJobs> call, Throwable t) {
-                             Log.e(TAG, "onFailure: ", t);
-                             //Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                         }
-                     }
-        );
     }
 
     @Override
@@ -94,5 +60,48 @@ public class JobNotice extends AppCompatActivity {
             return true;
         } else
             return super.onOptionsItemSelected(item);
+    }
+
+
+    @SuppressLint("StaticFieldLeak")
+    class JobNoticeApiCall extends AsyncTask<Void, Void, AllJobs> {
+
+
+        @Override
+        protected AllJobs doInBackground(Void... voids) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(JsonPlaceHolderApi.BASE_JOBS_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+
+            JsonPlaceHolderApi api = retrofit.create(JsonPlaceHolderApi.class);
+
+            Call<AllJobs> call = api.getAllJobs();
+            try {
+                return call.execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(AllJobs allJobs) {
+
+            ProgressBar loading = findViewById(R.id.progressBar);
+            loading.setVisibility(View.INVISIBLE);
+
+            if (allJobs == null) {
+                Toast.makeText(JobNotice.this, "Something went wrong! Please try again later.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            data = allJobs.getJobsData();
+            jobNoticeAdapter = new JobNoticeAdapter(JobNotice.this, data);
+
+            mRecyclerViewJobs.setAdapter(jobNoticeAdapter);
+
+        }
     }
 }
