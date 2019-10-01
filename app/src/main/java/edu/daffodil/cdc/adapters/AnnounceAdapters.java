@@ -1,10 +1,10 @@
 package edu.daffodil.cdc.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,16 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import edu.daffodil.cdc.R;
-import edu.daffodil.cdc.model.AnnouncementHelper;
+import edu.daffodil.cdc.resources.Announcement;
 
 public class AnnounceAdapters extends RecyclerView.Adapter<AnnounceAdapters.AnnounceViewHolder> {
 
     private Context context;
-    private List<AnnouncementHelper> announcementHelperList;
+    private List<Announcement> announcementList;
 
-    public AnnounceAdapters(Context context, List<AnnouncementHelper> announcementHelperList) {
+    public AnnounceAdapters(Context context, List<Announcement> announcementList) {
         this.context = context;
-        this.announcementHelperList = announcementHelperList;
+        this.announcementList = announcementList;
     }
 
     @NonNull
@@ -32,31 +32,32 @@ public class AnnounceAdapters extends RecyclerView.Adapter<AnnounceAdapters.Anno
         return new AnnounceViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull AnnounceViewHolder holder, int position) {
-        AnnouncementHelper helper = announcementHelperList.get(position);
+        Announcement helper = announcementList.get(position);
 
-        holder.titleTV.setText(helper.getTitle());
-        holder.messageTV.setText(helper.getMessage());
-        holder.dateTV.setText(helper.getDate());
+        holder.titleTV.setText(helper.getFileName());
+        holder.department.setText(helper.getDepeartment());
+        holder.iconText.setText(String.valueOf(helper.getDepeartment().charAt(0)));
+        holder.dateTV.setText("Published On: " + helper.getDate());
 
     }
 
     @Override
     public int getItemCount() {
-        return announcementHelperList.size();
+        return announcementList.size();
     }
 
     public class AnnounceViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView;
-        TextView titleTV, dateTV, messageTV;
+        TextView titleTV, dateTV, iconText, department;
 
         public AnnounceViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.m_Image_View);
             titleTV = itemView.findViewById(R.id.m_title);
             dateTV = itemView.findViewById(R.id.m_date);
-            messageTV = itemView.findViewById(R.id.expandable_text);
+            iconText = itemView.findViewById(R.id.textView);
+            department = itemView.findViewById(R.id.department);
         }
     }
 }

@@ -75,13 +75,14 @@
         android:listSelector="#FFD59B"
         android:overScrollMode="never"
         android:paddingTop="16dp"
-        android:paddingBottom="?attr/actionBarSize"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
+    <!--        android:paddingBottom="?attr/actionBarSize"-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:visibility="gone"
         app:menu="@menu/bottom_nav_menu" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
