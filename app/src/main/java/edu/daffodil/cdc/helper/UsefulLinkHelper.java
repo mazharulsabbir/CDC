@@ -1,4 +1,4 @@
-package edu.daffodil.cdc;
+package edu.daffodil.cdc.helper;
 
 public class UsefulLinkHelper {
     private String title;
