@@ -2,6 +2,7 @@ package edu.daffodil.cdc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -15,9 +16,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class CareerPlanningMap extends AppCompatActivity {
-    WebView webView;
-    ProgressBar progressBar;
+    private WebView webView;
+    private ProgressBar progressBar;
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +28,6 @@ public class CareerPlanningMap extends AppCompatActivity {
         webView =findViewById(R.id.webView);
         progressBar=findViewById(R.id.progressBar);
         progressBar.setMax(100);
-
-
 
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl("http://studentportal.diu.edu.bd//");

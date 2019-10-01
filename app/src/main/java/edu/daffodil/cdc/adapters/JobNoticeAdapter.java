@@ -14,11 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import edu.daffodil.cdc.R;
+import edu.daffodil.cdc.model.OnItemClick;
 import edu.daffodil.cdc.resources.JobsData;
 
 public class JobNoticeAdapter extends RecyclerView.Adapter<JobNoticeAdapter.JobNoticeViewHolder> {
     private Context context;
     private List<JobsData> data;
+    private OnItemClick onItemClick;
 
     public JobNoticeAdapter(Context context, List<JobsData> data) {
         this.context = context;
@@ -40,8 +42,6 @@ public class JobNoticeAdapter extends RecyclerView.Adapter<JobNoticeAdapter.JobN
         holder.jobVacancyName.setText(jobsData.getJobTitle());
         holder.jobDeadLine.setText(jobsData.getJobDeadline().getDate());
         holder.jobLocation.setText(jobsData.getJobDeadline().getTimezone());
-
-
     }
 
     @Override
@@ -66,6 +66,23 @@ public class JobNoticeAdapter extends RecyclerView.Adapter<JobNoticeAdapter.JobN
 //            menuFavorite = itemView.findViewById(R.id.menu_favorite);
 //            menuNotFavorite = itemView.findViewById(R.id.menu_not_favorite);
 //            menuShareJob = itemView.findViewById(R.id.menu_share_job);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemClick != null) {
+                        int position = getAdapterPosition();
+
+                        if (position != RecyclerView.NO_POSITION) {
+                            onItemClick.onItemClicked(position);
+                        }
+                    }
+                }
+            });
         }
+    }
+
+    public void setOnItemClickListener(OnItemClick itemClickListener) {
+        onItemClick = itemClickListener;
     }
 }
