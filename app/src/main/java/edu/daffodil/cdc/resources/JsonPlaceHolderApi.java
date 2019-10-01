@@ -1,4 +1,4 @@
-package edu.daffodil.cdc.RESTApi;
+package edu.daffodil.cdc.resources;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

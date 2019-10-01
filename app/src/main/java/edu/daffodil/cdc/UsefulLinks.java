@@ -4,15 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 import java.util.ArrayList;
 
-import edu.daffodil.cdc.Adapters.LinkAdapter;
+import edu.daffodil.cdc.adapters.LinkAdapter;
 
 public class UsefulLinks extends AppCompatActivity {
     private RecyclerView linkRV;

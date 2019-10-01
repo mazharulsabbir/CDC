@@ -1,4 +1,4 @@
-package edu.daffodil.cdc.RESTApi;
+package edu.daffodil.cdc.resources;
 
 import com.google.gson.annotations.SerializedName;
 

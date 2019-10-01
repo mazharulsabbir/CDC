@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.daffodil.cdc.Adapters.AnnounceAdapters;
+import edu.daffodil.cdc.adapters.AnnounceAdapters;
 import edu.daffodil.cdc.model.AnnouncementHelper;
 
 public class Announcements extends AppCompatActivity {

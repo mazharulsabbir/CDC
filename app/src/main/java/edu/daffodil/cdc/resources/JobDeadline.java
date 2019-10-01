@@ -1,4 +1,4 @@
-package edu.daffodil.cdc.RESTApi;
+package edu.daffodil.cdc.resources;
 
 public class JobDeadline {
     private String date;

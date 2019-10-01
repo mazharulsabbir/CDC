@@ -1,4 +1,4 @@
-package edu.daffodil.cdc.Adapters;
+package edu.daffodil.cdc.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import edu.daffodil.cdc.R;
-import edu.daffodil.cdc.RESTApi.JobsData;
+import edu.daffodil.cdc.resources.JobsData;
 
 public class JobNoticeAdapter extends RecyclerView.Adapter<JobNoticeAdapter.JobNoticeViewHolder> {
     private Context context;
