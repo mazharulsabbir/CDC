@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         layout.setTitle("Dashboard");
 
         recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         name = new String[9];
         name = getResources().getStringArray(R.array.dashboard);/*GET NAME FROM STRING RESOURCES*/

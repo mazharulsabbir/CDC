@@ -16,6 +16,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/jobNoticeRV"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        tools:listitem="@layout/example_layout_job_notice" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -7,43 +7,13 @@
     android:orientation="vertical"
     tools:context=".CareerOptionActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorDark">
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TableRow>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:text="Select Department:"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
-                        android:padding="5dp"/>
+        android:id="@+id/container"
+        android:layout_height="match_parent">
 
-                    <Spinner
-                        android:id="@+id/depSp"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:layout_gravity="center"
-                        />
-
-                </TableRow>
-
-            </TableLayout>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/careerRV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+    </FrameLayout>
 
 
 </LinearLayout>
