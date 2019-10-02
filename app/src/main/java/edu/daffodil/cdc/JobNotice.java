@@ -15,10 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.io.IOException;
 import java.util.List;
 
-import edu.daffodil.cdc.Adapters.JobNoticeAdapter;
-import edu.daffodil.cdc.RESTApi.AllJobs;
-import edu.daffodil.cdc.RESTApi.JobsData;
-import edu.daffodil.cdc.RESTApi.JsonPlaceHolderApi;
+import edu.daffodil.cdc.adapters.JobNoticeAdapter;
+import edu.daffodil.cdc.resources.AllJobs;
+import edu.daffodil.cdc.resources.JobsData;
+import edu.daffodil.cdc.resources.JsonPlaceHolderApi;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

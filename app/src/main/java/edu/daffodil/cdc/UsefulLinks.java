@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 
-import edu.daffodil.cdc.Adapters.LinkAdapter;
+import edu.daffodil.cdc.adapters.LinkAdapter;
 import edu.daffodil.cdc.helper.UsefulLinkHelper;
 
 public class UsefulLinks extends AppCompatActivity {

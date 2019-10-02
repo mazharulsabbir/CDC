@@ -1,5 +1,6 @@
 package edu.daffodil.cdc.helper;
 
+import android.util.Log;
 import android.view.View;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
@@ -39,18 +40,21 @@ public class CompanyViewHolder extends GroupViewHolder {
 
     private void animateExpand() {
         RotateAnimation rotate =
-                new RotateAnimation(360, 180, RELATIVE_TO_SELF, 0.5f, RELATIVE_TO_SELF, 0.5f);
+                new RotateAnimation(0f, 180f, RELATIVE_TO_SELF, 0.5f, RELATIVE_TO_SELF, 0.5f);
         rotate.setDuration(300);
         rotate.setFillAfter(true);
         arrow.setAnimation(rotate);
+        Log.d("animation----","open");
     }
 
     private void animateCollapse() {
         RotateAnimation rotate =
-                new RotateAnimation(180, 360, RELATIVE_TO_SELF, 0.5f, RELATIVE_TO_SELF, 0.5f);
-        rotate.setDuration(300);
+                new RotateAnimation(180f, 0f, RELATIVE_TO_SELF, 0.5f, RELATIVE_TO_SELF, 0.5f);
+        rotate.setDuration(100);
         rotate.setFillAfter(true);
         arrow.setAnimation(rotate);
+        Log.d("animation----","close");
+
     }
 
 }

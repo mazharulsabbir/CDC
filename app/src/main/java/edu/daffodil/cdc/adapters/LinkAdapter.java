@@ -1,4 +1,4 @@
-package edu.daffodil.cdc.Adapters;
+package edu.daffodil.cdc.adapters;
 
 import android.content.Context;
 import android.content.Intent;

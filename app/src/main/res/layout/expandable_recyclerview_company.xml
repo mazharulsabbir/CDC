@@ -20,9 +20,9 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:text="Company Title"
+            android:layout_marginTop="2dp"
             android:textColor="#000"
             android:textSize="20sp"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

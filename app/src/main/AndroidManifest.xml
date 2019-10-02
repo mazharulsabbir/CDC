@@ -5,7 +5,9 @@
     package="edu.daffodil.cdc">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <dist:module dist:instant="true" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/dashboard" />
         <activity android:name=".AppointmentScheduling" />
         <activity
             android:name=".SelfAssessment"
@@ -29,17 +34,15 @@
         <activity android:name=".Announcements" />
         <activity android:name=".CareerOptionActivity" />
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/dashboard">
+            android:theme="@style/AppTheme.SplashScreen"
+            android:name=".LoginActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
-
-    <dist:module dist:instant="true" />
 
 </manifest>
