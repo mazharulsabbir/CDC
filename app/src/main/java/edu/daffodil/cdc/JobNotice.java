@@ -1,11 +1,15 @@
 package edu.daffodil.cdc;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +20,7 @@ import java.io.IOException;
 import java.util.List;
 
 import edu.daffodil.cdc.adapters.JobNoticeAdapter;
+import edu.daffodil.cdc.model.OnItemClick;
 import edu.daffodil.cdc.resources.AllJobs;
 import edu.daffodil.cdc.resources.JobsData;
 import edu.daffodil.cdc.resources.JsonPlaceHolderApi;
@@ -27,7 +32,6 @@ public class JobNotice extends AppCompatActivity {
     private static final String TAG = "JobNotice";
 
     private List<JobsData> data;
-    private List<JobsData> limitedData;
 
     private RecyclerView mRecyclerViewJobs;
 
@@ -101,6 +105,34 @@ public class JobNotice extends AppCompatActivity {
             jobNoticeAdapter = new JobNoticeAdapter(JobNotice.this, data);
 
             mRecyclerViewJobs.setAdapter(jobNoticeAdapter);
+
+            jobNoticeAdapter.setOnItemClickListener(new OnItemClick() {
+                @Override
+                public void onItemClicked(int position) {
+                    Intent sharedIntent = new Intent(JobNotice.this, JobInfoViewerActivity.class);
+                    sharedIntent.putExtra("JOB_ID", data.get(position).getId());
+                    sharedIntent.putExtra("JOB_TITLE", data.get(position).getJobTitle());
+                    sharedIntent.putExtra("COMPANY_NAME", data.get(position).getCompanyName());
+                    sharedIntent.putExtra("LOCATION", data.get(position).getJobDeadline().getTimezone());
+
+                    startActivity(sharedIntent);
+
+
+//                    Pair[] pairs = new Pair[4];
+//                    pairs[0] = new Pair<View, String>(companyLogo, "company_logo");
+//                    pairs[1] = new Pair<View, String>(companyName, "company_name");
+//                    pairs[2] = new Pair<View, String>(vacancyName, "vacancy_name");
+//                    pairs[3] = new Pair<View, String>(location, "company_location");
+
+//                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+//                        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(), pairs);
+//                        startActivity(sharedIntent, options.toBundle());
+//
+//                    } else {
+//                        startActivity(sharedIntent);
+//                    }
+                }
+            });
 
         }
     }

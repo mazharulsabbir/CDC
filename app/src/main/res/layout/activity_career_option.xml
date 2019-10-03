@@ -7,6 +7,43 @@
     android:orientation="vertical"
     tools:context=".CareerOptionActivity">
 
+<<<<<<< HEAD
+=======
+    <TableLayout
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:elevation="8dp"
+        android:background="#66CCCCCC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Select Department:"
+                android:textSize="18dp"
+                android:textStyle="bold"/>
+
+            <Spinner
+                android:id="@+id/depSp"
+                style="@style/Widget.AppCompat.Spinner.DropDown"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:drawSelectorOnTop="true"
+                android:overlapAnchor="false"
+                />
+
+        </TableRow>
+
+    </TableLayout>
+>>>>>>> mazharulsabbir
 
     <FrameLayout
         android:layout_width="match_parent"

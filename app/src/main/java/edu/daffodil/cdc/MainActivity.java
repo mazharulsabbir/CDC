@@ -19,15 +19,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 public class MainActivity extends AppCompatActivity {
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
 
-    int[] icon = {R.drawable.career_planning, R.drawable.self_assessment, R.drawable.schedule_appointment,
+    private int[] icon = {R.drawable.career_planning, R.drawable.self_assessment, R.drawable.schedule_appointment,
             R.drawable.career_option, R.drawable.briefcase_96px, R.drawable.ic_announcement,
             R.drawable.link_104px, R.drawable.feedback_100px,R.drawable.phone_96px};
 
-    String[] name;
-
+    private String[] name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

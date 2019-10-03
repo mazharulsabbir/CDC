@@ -14,7 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import edu.daffodil.cdc.R;
+<<<<<<< HEAD
 import edu.daffodil.cdc.helper.UsefulLinkHelper;
+=======
+import edu.daffodil.cdc.model.UsefulLinkHelper;
+>>>>>>> mazharulsabbir
 
 public class LinkAdapter extends RecyclerView.Adapter<LinkAdapter.LinkViewHolder> {
     private Context context;
