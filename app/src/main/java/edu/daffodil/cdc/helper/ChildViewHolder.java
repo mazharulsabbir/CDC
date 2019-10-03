@@ -3,19 +3,18 @@ package edu.daffodil.cdc.helper;
 import android.view.View;
 import android.widget.TextView;
 
-import com.thoughtbot.expandablerecyclerview.viewholders.ChildViewHolder;
 
 import edu.daffodil.cdc.R;
 
-public class ProductViewHolder extends ChildViewHolder {
+public class ChildViewHolder extends com.thoughtbot.expandablerecyclerview.viewholders.ChildViewHolder {
     private TextView mTextView;
 
-    public ProductViewHolder(View itemView) {
+    public ChildViewHolder(View itemView) {
         super(itemView);
         mTextView=itemView.findViewById(R.id.textView);
     }
 
-    public void bind(Product product){
+    public void bind(ChildExpandable product){
         mTextView.setText(product.name);
     }
 }

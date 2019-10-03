@@ -3,26 +3,26 @@ package edu.daffodil.cdc.helper;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Product implements Parcelable {
+public class ChildExpandable implements Parcelable {
     public final String name;
 
-    public Product(String name) {
+    public ChildExpandable(String name) {
         this.name = name;
     }
 
-    protected Product(Parcel in) {
+    protected ChildExpandable(Parcel in) {
         name = in.readString();
     }
 
-    public static final Creator<Product> CREATOR = new Creator<Product>() {
+    public static final Creator<ChildExpandable> CREATOR = new Creator<ChildExpandable>() {
         @Override
-        public Product createFromParcel(Parcel in) {
-            return new Product(in);
+        public ChildExpandable createFromParcel(Parcel in) {
+            return new ChildExpandable(in);
         }
 
         @Override
-        public Product[] newArray(int size) {
-            return new Product[size];
+        public ChildExpandable[] newArray(int size) {
+            return new ChildExpandable[size];
         }
     };
 

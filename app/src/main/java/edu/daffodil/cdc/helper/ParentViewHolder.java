@@ -12,17 +12,17 @@ import edu.daffodil.cdc.R;
 
 import static android.view.animation.Animation.RELATIVE_TO_SELF;
 
-public class CompanyViewHolder extends GroupViewHolder {
+public class ParentViewHolder extends GroupViewHolder {
     TextView mTextView;
     ImageView arrow;
 
-    public CompanyViewHolder(View itemView) {
+    public ParentViewHolder(View itemView) {
         super(itemView);
         mTextView=itemView.findViewById(R.id.textView);
         arrow=itemView.findViewById(R.id.arrow);
     }
 
-    public void bind(Company company){
+    public void bind(ParentExpandable company){
         mTextView.setText(company.getTitle());
     }
 

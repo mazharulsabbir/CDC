@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import edu.daffodil.cdc.Adapters.ProductAdapter;
+import edu.daffodil.cdc.adapters.ProductAdapter;
 import edu.daffodil.cdc.R;
-import edu.daffodil.cdc.helper.Company;
-import edu.daffodil.cdc.helper.Product;
+import edu.daffodil.cdc.helper.ParentExpandable;
+import edu.daffodil.cdc.helper.ChildExpandable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,75 +44,75 @@ public class DepartmentList extends Fragment {
     }
 
     private void setData() {
-        ArrayList<Company> companies = new ArrayList<>();
+        ArrayList<ParentExpandable> companies = new ArrayList<>();
 
 
-        ArrayList<Product> SIT_products = new ArrayList<>();
+        ArrayList<ChildExpandable> SIT_products = new ArrayList<>();
 
-        SIT_products.add(new Product("Computer Science and Engineering"));
-        SIT_products.add(new Product("Software Engineering"));
-        SIT_products.add(new Product("Multimedia & Creative Technology (MCT)"));
-        SIT_products.add(new Product("General Educational Development"));
-        SIT_products.add(new Product("Environmental Science and Disaster Management"));
-        SIT_products.add(new Product("Computing and Information System"));
+        SIT_products.add(new ChildExpandable("Computer Science and Engineering"));
+        SIT_products.add(new ChildExpandable("Software Engineering"));
+        SIT_products.add(new ChildExpandable("Multimedia & Creative Technology (MCT)"));
+        SIT_products.add(new ChildExpandable("General Educational Development"));
+        SIT_products.add(new ChildExpandable("Environmental Science and Disaster Management"));
+        SIT_products.add(new ChildExpandable("Computing and Information System"));
 
 
-        Company SIT = new Company("Faculty of Science and Information Technology", SIT_products);
+        ParentExpandable SIT = new ParentExpandable("Faculty of Science and Information Technology", SIT_products);
         companies.add(SIT);
 
 
-        ArrayList<Product> ENG_products = new ArrayList<>();
+        ArrayList<ChildExpandable> ENG_products = new ArrayList<>();
 
-        ENG_products.add(new Product("Electronics and Telecommunication Engineering"));
-        ENG_products.add(new Product("Textile Engineering"));
-        ENG_products.add(new Product("Electrical and Electronic Engineering"));
-        ENG_products.add(new Product("Department of Architecture"));
-        ENG_products.add(new Product("Civil Engineering"));
+        ENG_products.add(new ChildExpandable("Electronics and Telecommunication Engineering"));
+        ENG_products.add(new ChildExpandable("Textile Engineering"));
+        ENG_products.add(new ChildExpandable("Electrical and Electronic Engineering"));
+        ENG_products.add(new ChildExpandable("Department of Architecture"));
+        ENG_products.add(new ChildExpandable("Civil Engineering"));
 
 
-        Company ENG = new Company("Faculty of Engineering", ENG_products);
+        ParentExpandable ENG = new ParentExpandable("Faculty of Engineering", ENG_products);
         companies.add(ENG);
 
 
-        ArrayList<Product> BE_products = new ArrayList<>();
+        ArrayList<ChildExpandable> BE_products = new ArrayList<>();
 
-        BE_products.add(new Product("Business Administration"));
-        BE_products.add(new Product("Business Studies"));
-        BE_products.add(new Product("Real Estate"));
-        BE_products.add(new Product("Tourism & Hospitality Management"));
-        BE_products.add(new Product("Innovation & Entrepreneurship"));
+        BE_products.add(new ChildExpandable("Business Administration"));
+        BE_products.add(new ChildExpandable("Business Studies"));
+        BE_products.add(new ChildExpandable("Real Estate"));
+        BE_products.add(new ChildExpandable("Tourism & Hospitality Management"));
+        BE_products.add(new ChildExpandable("Innovation & Entrepreneurship"));
 
 
 
-        Company BE = new Company("Faculty of Business & Entrepreneurship", BE_products);
+        ParentExpandable BE = new ParentExpandable("Faculty of Business & Entrepreneurship", BE_products);
         companies.add(BE);
 
-        ArrayList<Product> AHS_products = new ArrayList<>();
+        ArrayList<ChildExpandable> AHS_products = new ArrayList<>();
 
-        AHS_products.add(new Product("Department of Pharmacy"));
-        AHS_products.add(new Product("Nutrition and Food Engineering"));
-        AHS_products.add(new Product("Department of Public Health"));
-
-
+        AHS_products.add(new ChildExpandable("Department of Pharmacy"));
+        AHS_products.add(new ChildExpandable("Nutrition and Food Engineering"));
+        AHS_products.add(new ChildExpandable("Department of Public Health"));
 
 
-        Company AHS  = new Company("Faculty of Allied Health Science", AHS_products);
+
+
+        ParentExpandable AHS  = new ParentExpandable("Faculty of Allied Health Science", AHS_products);
         companies.add(AHS);
 
 
 
-        ArrayList<Product> HSS_products = new ArrayList<>();
+        ArrayList<ChildExpandable> HSS_products = new ArrayList<>();
 
-        HSS_products.add(new Product("Department of English"));
-        HSS_products.add(new Product("Department of Law"));
-        HSS_products.add(new Product("Journalism & Mass Communication"));
-        HSS_products.add(new Product("Department of Development Studies"));
-
-
+        HSS_products.add(new ChildExpandable("Department of English"));
+        HSS_products.add(new ChildExpandable("Department of Law"));
+        HSS_products.add(new ChildExpandable("Journalism & Mass Communication"));
+        HSS_products.add(new ChildExpandable("Department of Development Studies"));
 
 
 
-        Company HSS  = new Company("Faculty of Humanities & Social Science", AHS_products);
+
+
+        ParentExpandable HSS  = new ParentExpandable("Faculty of Humanities & Social Science", AHS_products);
         companies.add(HSS);
 
 
