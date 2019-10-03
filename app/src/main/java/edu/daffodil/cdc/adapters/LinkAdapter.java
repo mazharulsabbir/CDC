@@ -13,12 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import edu.daffodil.cdc.R;
-<<<<<<< HEAD
-import edu.daffodil.cdc.helper.UsefulLinkHelper;
-=======
 import edu.daffodil.cdc.model.UsefulLinkHelper;
->>>>>>> mazharulsabbir
+
+import edu.daffodil.cdc.R;
 
 public class LinkAdapter extends RecyclerView.Adapter<LinkAdapter.LinkViewHolder> {
     private Context context;
@@ -32,7 +29,7 @@ public class LinkAdapter extends RecyclerView.Adapter<LinkAdapter.LinkViewHolder
     @NonNull
     @Override
     public LinkViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.list_card,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.list_card, parent, false);
         return new LinkViewHolder(view);
     }
 
@@ -59,6 +56,7 @@ public class LinkAdapter extends RecyclerView.Adapter<LinkAdapter.LinkViewHolder
 
     public class LinkViewHolder extends RecyclerView.ViewHolder {
         TextView linkName;
+
         public LinkViewHolder(@NonNull View itemView) {
             super(itemView);
 

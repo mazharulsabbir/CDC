@@ -10,11 +10,8 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 
 import edu.daffodil.cdc.adapters.LinkAdapter;
-<<<<<<< HEAD
-import edu.daffodil.cdc.helper.UsefulLinkHelper;
-=======
+
 import edu.daffodil.cdc.model.UsefulLinkHelper;
->>>>>>> mazharulsabbir
 
 public class UsefulLinks extends AppCompatActivity {
     private RecyclerView linkRV;

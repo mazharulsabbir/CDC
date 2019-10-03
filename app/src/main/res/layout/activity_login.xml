@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:paddingStart="16dp"
     android:paddingEnd="16dp"
-    android:background="#FEFFF7"
+    android:background="#FCFCFC"
     tools:context=".LoginActivity">
 
     <androidx.core.widget.NestedScrollView

@@ -1,9 +1,4 @@
-<<<<<<< HEAD:app/src/main/java/edu/daffodil/cdc/helper/UsefulLinkHelper.java
-package edu.daffodil.cdc.helper;
-=======
 package edu.daffodil.cdc.model;
->>>>>>> mazharulsabbir:app/src/main/java/edu/daffodil/cdc/model/UsefulLinkHelper.java
-
 public class UsefulLinkHelper {
     private String title;
     private String url;
