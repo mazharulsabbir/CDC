@@ -2,23 +2,22 @@ package edu.daffodil.cdc.fragment;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.thoughtbot.expandablerecyclerview.listeners.OnGroupClickListener;
-
 import java.util.ArrayList;
 
-import edu.daffodil.cdc.adapters.ExpandableAdapter;
 import edu.daffodil.cdc.R;
-import edu.daffodil.cdc.helper.ParentExpandable;
+import edu.daffodil.cdc.adapters.ExpandableAdapter;
 import edu.daffodil.cdc.helper.ChildExpandable;
+import edu.daffodil.cdc.helper.ParentExpandable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -86,7 +85,6 @@ public class DepartmentList extends Fragment {
         BE_products.add(new ChildExpandable("Innovation & Entrepreneurship"));
 
 
-
         ParentExpandable BE = new ParentExpandable("Faculty of Business & Entrepreneurship", BE_products);
         companies.add(BE);
 
@@ -97,11 +95,8 @@ public class DepartmentList extends Fragment {
         AHS_products.add(new ChildExpandable("Department of Public Health"));
 
 
-
-
-        ParentExpandable AHS  = new ParentExpandable("Faculty of Allied Health Science", AHS_products);
+        ParentExpandable AHS = new ParentExpandable("Faculty of Allied Health Science", AHS_products);
         companies.add(AHS);
-
 
 
         ArrayList<ChildExpandable> HSS_products = new ArrayList<>();
@@ -112,21 +107,21 @@ public class DepartmentList extends Fragment {
         HSS_products.add(new ChildExpandable("Department of Development Studies"));
 
 
-
-
-
-        ParentExpandable HSS  = new ParentExpandable("Faculty of Humanities & Social Science", AHS_products);
+        ParentExpandable HSS = new ParentExpandable("Faculty of Humanities & Social Science", AHS_products);
         companies.add(HSS);
-
 
 
         ExpandableAdapter adapter = new ExpandableAdapter(companies);
         recyclerView.setAdapter(adapter);
 
+        adapter.onChildClickListener(new ExpandableAdapter.OnClickListenerChild() {
+            @Override
+            public void clickListener(int position) {
+                Toast.makeText(getContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
+                Log.d("ITEM CLICK ---", position + "");
+            }
+        });
 
 
     }
-
-
-
 }
