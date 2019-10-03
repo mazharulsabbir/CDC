@@ -15,8 +15,10 @@ import edu.daffodil.cdc.helper.ParentExpandable;
 import edu.daffodil.cdc.helper.ParentViewHolder;
 import edu.daffodil.cdc.helper.ChildExpandable;
 
-public class ProductAdapter extends ExpandableRecyclerViewAdapter<ParentViewHolder, ChildViewHolder> {
-    public ProductAdapter(List<? extends ExpandableGroup> groups) {
+public class ExpandableAdapter extends ExpandableRecyclerViewAdapter<ParentViewHolder, ChildViewHolder> {
+    private ChildViewHolder.OnClickListenerChild onClickListenerChild;
+
+    public ExpandableAdapter(List<? extends ExpandableGroup> groups) {
         super(groups);
     }
 
@@ -29,6 +31,7 @@ public class ProductAdapter extends ExpandableRecyclerViewAdapter<ParentViewHold
     @Override
     public ChildViewHolder onCreateChildViewHolder(ViewGroup parent, int viewType) {
         View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.expandable_recyclerview_child,parent,false);
+
         return new ChildViewHolder(v);
     }
 
@@ -37,6 +40,8 @@ public class ProductAdapter extends ExpandableRecyclerViewAdapter<ParentViewHold
 
         final ChildExpandable product= (ChildExpandable) group.getItems().get(childIndex);
         holder.bind(product);
+
+
     }
 
     @Override
@@ -45,4 +50,6 @@ public class ProductAdapter extends ExpandableRecyclerViewAdapter<ParentViewHold
         final ParentExpandable company= (ParentExpandable) group;
         holder.bind(company);
     }
+
+
 }

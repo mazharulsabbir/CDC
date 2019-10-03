@@ -5,14 +5,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.thoughtbot.expandablerecyclerview.listeners.OnGroupClickListener;
+
 import java.util.ArrayList;
 
-import edu.daffodil.cdc.adapters.ProductAdapter;
+import edu.daffodil.cdc.adapters.ExpandableAdapter;
 import edu.daffodil.cdc.R;
 import edu.daffodil.cdc.helper.ParentExpandable;
 import edu.daffodil.cdc.helper.ChildExpandable;
@@ -116,9 +119,14 @@ public class DepartmentList extends Fragment {
         companies.add(HSS);
 
 
-        ProductAdapter adapter = new ProductAdapter(companies);
+
+        ExpandableAdapter adapter = new ExpandableAdapter(companies);
         recyclerView.setAdapter(adapter);
+
+
+
     }
+
 
 
 }
