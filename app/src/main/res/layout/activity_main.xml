@@ -49,6 +49,7 @@
                     app:layout_constraintTop_toTopOf="@+id/imageView" />
 
                 <TextView
+                    android:id="@+id/pro_department"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Department"
@@ -59,30 +60,32 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                style="@style/ToolbarOverlayTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_collapseMode="pin"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="@+id/pro_name"
+                app:layout_constraintTop_toBottomOf="@+id/pro_name"
                 app:title="Dashboard" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="8dp"
+        android:horizontalSpacing="8dp"
         android:listSelector="#FFD59B"
         android:overScrollMode="never"
-        android:paddingTop="16dp"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        tools:listitem="@layout/dashboard_sample">
 
-    <!--        android:paddingBottom="?attr/actionBarSize"-->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:visibility="gone"
-        app:menu="@menu/bottom_nav_menu" />
+    </androidx.recyclerview.widget.RecyclerView>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

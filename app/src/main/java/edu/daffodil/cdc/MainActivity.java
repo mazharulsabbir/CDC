@@ -16,15 +16,13 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.appbar.CollapsingToolbarLayout;
-
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
 
 
     private int[] icon = {R.drawable.career_planning, R.drawable.self_assessment, R.drawable.schedule_appointment,
             R.drawable.career_option, R.drawable.briefcase_96px, R.drawable.ic_announcement,
-            R.drawable.link_104px, R.drawable.feedback_100px,R.drawable.phone_96px};
+            R.drawable.link_104px, R.drawable.feedback_100px, R.drawable.phone_96px};
 
     private String[] name;
 
@@ -34,14 +32,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Dashboard");
-
-        CollapsingToolbarLayout layout  = findViewById(R.id.collapsing_toolbar);
-        layout.setTitleEnabled(true);
-        layout.setTitle("Dashboard");
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Dashboard");
+        }
 
         recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         name = new String[9];
         name = getResources().getStringArray(R.array.dashboard);/*GET NAME FROM STRING RESOURCES*/

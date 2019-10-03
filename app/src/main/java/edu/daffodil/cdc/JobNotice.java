@@ -1,15 +1,12 @@
 package edu.daffodil.cdc;
 
 import android.annotation.SuppressLint;
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -116,21 +113,6 @@ public class JobNotice extends AppCompatActivity {
                     sharedIntent.putExtra("LOCATION", data.get(position).getJobDeadline().getTimezone());
 
                     startActivity(sharedIntent);
-
-
-//                    Pair[] pairs = new Pair[4];
-//                    pairs[0] = new Pair<View, String>(companyLogo, "company_logo");
-//                    pairs[1] = new Pair<View, String>(companyName, "company_name");
-//                    pairs[2] = new Pair<View, String>(vacancyName, "vacancy_name");
-//                    pairs[3] = new Pair<View, String>(location, "company_location");
-
-//                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-//                        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(), pairs);
-//                        startActivity(sharedIntent, options.toBundle());
-//
-//                    } else {
-//                        startActivity(sharedIntent);
-//                    }
                 }
             });
 

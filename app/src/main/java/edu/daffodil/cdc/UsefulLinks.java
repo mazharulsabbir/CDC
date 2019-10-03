@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import edu.daffodil.cdc.adapters.LinkAdapter;
 import edu.daffodil.cdc.model.UsefulLinkHelper;
 
+import edu.daffodil.cdc.model.UsefulLinkHelper;
+
 public class UsefulLinks extends AppCompatActivity {
     private RecyclerView linkRV;
     private LinkAdapter linkAdapter;

@@ -1,37 +1,37 @@
 package edu.daffodil.cdc;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import edu.daffodil.cdc.fragment.DepartmentList;
 
 public class CareerOptionActivity extends AppCompatActivity {
+    TextView title_text;
 
-    String [] departmentList;
-    private Spinner spinner;
-    private RecyclerView careerRV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_career_option);
-
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Career option");
+            getSupportActionBar().setTitle("Career Option");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+        openFragment();
 
-        careerRV = findViewById(R.id.careerRV);
+    }
 
-
-        departmentList = getResources().getStringArray(R.array.depertmentList);
-        spinner = findViewById(R.id.depSp);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.spinner_dep_list,R.id.depTV,departmentList);
-        spinner.setAdapter(adapter);
-
+    private void openFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.disallowAddToBackStack(); //to remove back fragment
+        transaction.replace(R.id.container, new DepartmentList())
+                .commit();
     }
 
     @Override
@@ -43,4 +43,5 @@ public class CareerOptionActivity extends AppCompatActivity {
         } else
             return super.onOptionsItemSelected(item);
     }
+
 }
