@@ -23,13 +23,17 @@ import edu.daffodil.cdc.repository.AssessmentViewModel;
 
 public class SelfAssessment extends AppCompatActivity implements View.OnClickListener {
 
-    List<Assessments> assessmentsList;
+    private static final String TAG = "SelfAssessment";
+
+    private List<Assessments> assessmentsList;
     private ProgressBar timeRemainingProgress;
     private TextView textViewQuestion;
     private MaterialButton answer1, answer2, answer3, answer4;
     private MaterialButton skipAns;
 
     private AssessmentViewModel assessmentViewModel;
+
+    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +54,8 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
 
         answer4 = findViewById(R.id.ans4);
         answer4.setOnClickListener(this);
-        assessmentsList = new ArrayList<>();//////
+
+        assessmentsList = new ArrayList<>();
 
         assessmentViewModel = ViewModelProviders.of(this)
                 .get(AssessmentViewModel.class);
@@ -64,18 +69,19 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
 
                         assessmentViewModel.sizeOfList = assessmentsList.size();
 
-                        if (assessmentViewModel.quesNumber < 1)
-                            nextQuestion();
-                        else {
-                            assessmentViewModel.quesNumber -= 1;
-                            currentQuestion(assessmentViewModel.quesNumber);
-                        }
+                        showQuestion();
+
+                        startTimer();
+                        updateTimerProgress();
                     }
                 }
         );
-        startTimer();
+    }
 
-        updateTimerProgress();
+    @Override
+    protected void onPause() {
+        super.onPause();
+        assessmentViewModel.mCountDownTimer.cancel();
     }
 
     @Override
@@ -85,18 +91,22 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
         }
 
         if (v.getId() == R.id.skip_ques) {
-            nextQuestion();
+            showQuestion();
             resetTimer();
         }
     }
 
     @SuppressLint("SetTextI18n")
-    private void nextQuestion() {
+    private void showQuestion() {
+        resetTimer();
+
         if (assessmentsList.size() == 0)
             return;
+
         if (assessmentsList.size() > assessmentViewModel.quesNumber) {
             TextView n = findViewById(R.id.question_number);
-            n.setText("Q" + (assessmentViewModel.quesNumber + 1));
+            int m = assessmentViewModel.quesNumber;
+            n.setText("Q" + (m + 1));
 
             Assessments assessments = assessmentsList.get(assessmentViewModel.quesNumber);
             textViewQuestion.setText(assessments.getQuestion());
@@ -105,33 +115,8 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
             answer3.setText(assessments.getAns3());
             answer4.setText(assessments.getAns4());
 
-            assessmentViewModel.quesNumber++;
         } else {
             Toast.makeText(this, "No More Questions!", Toast.LENGTH_SHORT).show();
-            resetTimer();
-        }
-    }
-
-    @SuppressLint("SetTextI18n")
-    private void currentQuestion(int index) {
-
-        if (assessmentsList.size() > index) {
-
-            TextView n = findViewById(R.id.question_number);
-            n.setText("Q" + (index + 1));
-
-            Assessments assessments = assessmentsList.get(index);
-            textViewQuestion.setText(assessments.getQuestion());
-            answer1.setText(assessments.getAns1());
-            answer2.setText(assessments.getAns2());
-            answer3.setText(assessments.getAns3());
-            answer4.setText(assessments.getAns4());
-
-            assessmentViewModel.quesNumber++;
-
-        } else {
-            Toast.makeText(this, "No More Questions!", Toast.LENGTH_SHORT).show();
-            resetTimer();
         }
     }
 
@@ -141,10 +126,10 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
         /*TODO: CHECK THE GIVEN ANSWER*/
 
         /*show next questions*/
-        nextQuestion();
-//        resetTimer();
-    }
+        resetTimer();
 
+        showQuestion();
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -156,24 +141,9 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
             return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (assessmentViewModel.mCountDownTimer != null)
-            pauseTimer();
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (assessmentViewModel.mCountDownTimer != null)
-            assessmentViewModel.mCountDownTimer.cancel();
-    }
-
     /*COUNT DOWN TIMER SECTION*/
     private void startTimer() {
-        new CountDownTimer(assessmentViewModel.mTimeLeftInMillis, 1000) {
+        assessmentViewModel.mCountDownTimer = new CountDownTimer(assessmentViewModel.mTimeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 assessmentViewModel.mTimeLeftInMillis = millisUntilFinished;
@@ -182,21 +152,21 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
 
             @Override
             public void onFinish() {
+                assessmentViewModel.quesNumber++;
+
                 if (assessmentViewModel.quesNumber < assessmentViewModel.sizeOfList) {
                     resetTimer();
                     startTimer();
-                    nextQuestion();
+                    showQuestion();
+                } else {
+                    timeRemainingProgress.setProgress(15);
                 }
                 /*TODO: SHOW RESULT*/
             }
+
         }.start();
 
         assessmentViewModel.mTimerRunning = true;
-    }
-
-    private void pauseTimer() {
-        assessmentViewModel.mCountDownTimer.cancel();
-        assessmentViewModel.mTimerRunning = false;
     }
 
     private void resetTimer() {
@@ -206,7 +176,6 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
 
     private void updateTimerProgress() {
         int seconds = (int) (assessmentViewModel.mTimeLeftInMillis / 1000) % 60;
-
-        timeRemainingProgress.setProgress(seconds * 4);
+        timeRemainingProgress.setProgress(seconds);
     }
 }
