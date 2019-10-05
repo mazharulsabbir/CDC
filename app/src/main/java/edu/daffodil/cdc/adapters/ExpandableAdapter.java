@@ -19,6 +19,8 @@ import edu.daffodil.cdc.helper.ParentViewHolder;
 
 public class ExpandableAdapter extends ExpandableRecyclerViewAdapter<ParentViewHolder, ExpandableAdapter.ChildViewHolder> {
     private OnClickListenerChild onClickListenerChild;
+    private String parentItemTitle;
+    private ExpandableGroup group;
 
     public ExpandableAdapter(List<? extends ExpandableGroup> groups) {
         super(groups);
@@ -41,19 +43,20 @@ public class ExpandableAdapter extends ExpandableRecyclerViewAdapter<ParentViewH
     public void onBindChildViewHolder(ChildViewHolder holder, int flatPosition, final ExpandableGroup group, final int childIndex) {
         holder.position(childIndex);
         final ChildExpandable product = (ChildExpandable) group.getItems().get(childIndex);
+        this.group = group;
+
         holder.bind(product);
     }
 
     @Override
     public void onBindGroupViewHolder(ParentViewHolder holder, int flatPosition, ExpandableGroup group) {
-
         final ParentExpandable company = (ParentExpandable) group;
         holder.bind(company);
     }
 
     public class ChildViewHolder extends com.thoughtbot.expandablerecyclerview.viewholders.ChildViewHolder {
         private TextView mTextView;
-        private int pos;
+        private int childPosition;
 
         public ChildViewHolder(View itemView) {
             super(itemView);
@@ -66,7 +69,7 @@ public class ExpandableAdapter extends ExpandableRecyclerViewAdapter<ParentViewH
                     if (onClickListenerChild != null) {
                         int index = getAdapterPosition();
                         if (index != RecyclerView.NO_POSITION) {
-                            onClickListenerChild.clickListener(pos);
+                            onClickListenerChild.clickListener(childPosition,group);
                         }
                     }
                 }
@@ -78,7 +81,7 @@ public class ExpandableAdapter extends ExpandableRecyclerViewAdapter<ParentViewH
         }
 
         public void position(int pos) {
-            this.pos = pos;
+            this.childPosition = pos;
         }
 
     }
@@ -88,7 +91,7 @@ public class ExpandableAdapter extends ExpandableRecyclerViewAdapter<ParentViewH
     }
 
     public interface OnClickListenerChild {
-        void clickListener(int position);
+        void clickListener(int position,ExpandableGroup group);
     }
 
 }

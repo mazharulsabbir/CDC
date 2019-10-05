@@ -6,6 +6,10 @@ import android.os.Parcelable;
 public class ChildExpandable implements Parcelable {
     public final String name;
 
+    public String getName() {
+        return name;
+    }
+
     public ChildExpandable(String name) {
         this.name = name;
     }

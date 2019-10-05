@@ -2,7 +2,6 @@ package edu.daffodil.cdc.fragment;
 
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,8 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
 
 import java.util.ArrayList;
 
@@ -23,10 +24,19 @@ import edu.daffodil.cdc.helper.ParentExpandable;
  * A simple {@link Fragment} subclass.
  */
 public class DepartmentList extends Fragment {
+    private static final String TAG = "DepartmentList";
+
+    private static final String FSIT = "Faculty of Science and Information Technology";
+    private static final String FE = "Faculty of Engineering";
+    private static final String FBE = "Faculty of Business & Entrepreneurship";
+    private static final String FAHS = "Faculty of Allied Health Science";
+    private static final String FHSS = "Faculty of Humanities & Social Science";
 
 
-    View view;
-    RecyclerView recyclerView;
+    private View view;
+    private RecyclerView recyclerView;
+
+    private String parentItemTitle;
 
 
     @Override
@@ -46,7 +56,7 @@ public class DepartmentList extends Fragment {
     }
 
     private void setData() {
-        ArrayList<ParentExpandable> companies = new ArrayList<>();
+        final ArrayList<ParentExpandable> companies = new ArrayList<>();
 
 
         ArrayList<ChildExpandable> SIT_products = new ArrayList<>();
@@ -59,7 +69,7 @@ public class DepartmentList extends Fragment {
         SIT_products.add(new ChildExpandable("Computing and Information System"));
 
 
-        ParentExpandable SIT = new ParentExpandable("Faculty of Science and Information Technology", SIT_products);
+        final ParentExpandable SIT = new ParentExpandable(FSIT, SIT_products);
         companies.add(SIT);
 
 
@@ -72,7 +82,7 @@ public class DepartmentList extends Fragment {
         ENG_products.add(new ChildExpandable("Civil Engineering"));
 
 
-        ParentExpandable ENG = new ParentExpandable("Faculty of Engineering", ENG_products);
+        ParentExpandable ENG = new ParentExpandable(FE, ENG_products);
         companies.add(ENG);
 
 
@@ -85,7 +95,7 @@ public class DepartmentList extends Fragment {
         BE_products.add(new ChildExpandable("Innovation & Entrepreneurship"));
 
 
-        ParentExpandable BE = new ParentExpandable("Faculty of Business & Entrepreneurship", BE_products);
+        ParentExpandable BE = new ParentExpandable(FBE, BE_products);
         companies.add(BE);
 
         ArrayList<ChildExpandable> AHS_products = new ArrayList<>();
@@ -95,7 +105,7 @@ public class DepartmentList extends Fragment {
         AHS_products.add(new ChildExpandable("Department of Public Health"));
 
 
-        ParentExpandable AHS = new ParentExpandable("Faculty of Allied Health Science", AHS_products);
+        ParentExpandable AHS = new ParentExpandable(FAHS, AHS_products);
         companies.add(AHS);
 
 
@@ -107,21 +117,23 @@ public class DepartmentList extends Fragment {
         HSS_products.add(new ChildExpandable("Department of Development Studies"));
 
 
-        ParentExpandable HSS = new ParentExpandable("Faculty of Humanities & Social Science", AHS_products);
+        ParentExpandable HSS = new ParentExpandable(FHSS, AHS_products);
         companies.add(HSS);
 
 
-        ExpandableAdapter adapter = new ExpandableAdapter(companies);
+        final ExpandableAdapter adapter = new ExpandableAdapter(companies);
         recyclerView.setAdapter(adapter);
 
         adapter.onChildClickListener(new ExpandableAdapter.OnClickListenerChild() {
             @Override
-            public void clickListener(int position) {
-                Toast.makeText(getContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
-                Log.d("ITEM CLICK ---", position + "");
+            public void clickListener(int position, ExpandableGroup group) {
+                final ChildExpandable items = (ChildExpandable) group.getItems().get(position);
+
+                Toast.makeText(getContext(),
+                        items.getName(),
+                        Toast.LENGTH_SHORT)
+                        .show();
             }
         });
-
-
     }
 }
