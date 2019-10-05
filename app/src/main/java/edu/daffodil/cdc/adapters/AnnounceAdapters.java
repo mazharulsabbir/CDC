@@ -60,4 +60,5 @@ public class AnnounceAdapters extends RecyclerView.Adapter<AnnounceAdapters.Anno
             department = itemView.findViewById(R.id.department);
         }
     }
+
 }

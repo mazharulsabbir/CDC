@@ -23,6 +23,7 @@
             android:theme="@style/dashboard" />
         <activity android:name=".AppointmentScheduling" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".SelfAssessment"
             android:theme="@style/dashboard" />
         <activity android:name=".ContactUs" />
