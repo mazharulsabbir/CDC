@@ -182,7 +182,6 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
 
             @Override
             public void onFinish() {
-                Toast.makeText(SelfAssessment.this, "Val:" + assessmentViewModel.quesNumber, Toast.LENGTH_SHORT).show();
                 if (assessmentViewModel.quesNumber < assessmentViewModel.sizeOfList) {
                     resetTimer();
                     startTimer();
