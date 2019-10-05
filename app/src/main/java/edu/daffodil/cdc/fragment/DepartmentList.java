@@ -2,6 +2,7 @@ package edu.daffodil.cdc.fragment;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,8 +36,7 @@ public class DepartmentList extends Fragment {
 
     private View view;
     private RecyclerView recyclerView;
-
-    private String parentItemTitle;
+    private Toast toast;
 
 
     @Override
@@ -117,7 +117,7 @@ public class DepartmentList extends Fragment {
         HSS_products.add(new ChildExpandable("Department of Development Studies"));
 
 
-        ParentExpandable HSS = new ParentExpandable(FHSS, AHS_products);
+        ParentExpandable HSS = new ParentExpandable(FHSS, HSS_products);
         companies.add(HSS);
 
 
@@ -127,12 +127,22 @@ public class DepartmentList extends Fragment {
         adapter.onChildClickListener(new ExpandableAdapter.OnClickListenerChild() {
             @Override
             public void clickListener(int position, ExpandableGroup group) {
-                final ChildExpandable items = (ChildExpandable) group.getItems().get(position);
 
-                Toast.makeText(getContext(),
-                        items.getName(),
-                        Toast.LENGTH_SHORT)
-                        .show();
+                try {
+                    final ChildExpandable items = (ChildExpandable) group.getItems().get(position);
+                    if (toast != null)
+                        toast.cancel();
+
+                    toast = Toast.makeText(getContext(),
+                            items.getName(),
+                            Toast.LENGTH_SHORT);
+
+                    toast.show();
+
+                } catch (IndexOutOfBoundsException e) {
+                    e.printStackTrace();
+                    Log.e(TAG, "Child Position: " + position, e.getCause());
+                }
             }
         });
     }

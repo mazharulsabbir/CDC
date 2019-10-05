@@ -43,9 +43,8 @@ public class ExpandableAdapter extends ExpandableRecyclerViewAdapter<ParentViewH
     public void onBindChildViewHolder(ChildViewHolder holder, int flatPosition, final ExpandableGroup group, final int childIndex) {
         holder.position(childIndex);
         final ChildExpandable product = (ChildExpandable) group.getItems().get(childIndex);
-        this.group = group;
-
         holder.bind(product);
+        this.group = group;
     }
 
     @Override
