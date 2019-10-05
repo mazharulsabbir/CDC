@@ -20,8 +20,6 @@ public class AssessmentViewModel extends AndroidViewModel {
     public CountDownTimer mCountDownTimer;
     public long mTimeLeftInMillis = START_TIME_IN_MILLIS;
 
-    public int orientedTimes = 0;
-
     private LiveData<List<Assessments>> listLiveData;
 
     public AssessmentViewModel(@NonNull Application application) {

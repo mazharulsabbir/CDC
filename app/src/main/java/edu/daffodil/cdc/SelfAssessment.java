@@ -98,7 +98,6 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
 
     @SuppressLint("SetTextI18n")
     private void showQuestion() {
-        resetTimer();
 
         if (assessmentsList.size() == 0)
             return;
@@ -116,6 +115,20 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
             answer4.setText(assessments.getAns4());
 
         } else {
+            assessmentViewModel.mCountDownTimer.cancel();
+            resetTimer();
+
+            TextView n = findViewById(R.id.question_number);
+            int m = assessmentViewModel.quesNumber;
+            n.setText("Q" + (m));
+
+            Assessments assessments = assessmentsList.get(assessmentViewModel.quesNumber - 1);
+            textViewQuestion.setText(assessments.getQuestion());
+            answer1.setText(assessments.getAns1());
+            answer2.setText(assessments.getAns2());
+            answer3.setText(assessments.getAns3());
+            answer4.setText(assessments.getAns4());
+
             Toast.makeText(this, "No More Questions!", Toast.LENGTH_SHORT).show();
         }
     }
@@ -170,7 +183,7 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
     }
 
     private void resetTimer() {
-        assessmentViewModel.mTimeLeftInMillis = assessmentViewModel.START_TIME_IN_MILLIS;
+        assessmentViewModel.mTimeLeftInMillis = AssessmentViewModel.START_TIME_IN_MILLIS;
         updateTimerProgress();
     }
 
