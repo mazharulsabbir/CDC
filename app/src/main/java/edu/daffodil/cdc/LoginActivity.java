@@ -58,14 +58,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btn_sign_in:
                 startActivity(new Intent(this, MainActivity.class));
 
-                if (!validateEmail() | !validatePassword()) {
-                    return;
-                }
 
-                String userEmail = textInputEmail.getEditText().getText().toString();
-                String userPassword = textInputPassword.getEditText().getText().toString();
-
-                Toast.makeText(this, "No User Found. Try Another!", Toast.LENGTH_SHORT).show();
+//                if (!validateEmail() | !validatePassword()) {
+//                    return;
+//                }
+//
+//                String userEmail = textInputEmail.getEditText().getText().toString();
+//                String userPassword = textInputPassword.getEditText().getText().toString();
+//
+//                Toast.makeText(this, "No User Found. Try Another!", Toast.LENGTH_SHORT).show();
 
                 break;
 
