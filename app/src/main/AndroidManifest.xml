@@ -22,13 +22,13 @@
         <activity android:name=".AppointmentScheduling" />
         <activity
             android:name=".SelfAssessment"
-            android:theme="@style/dashboard" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ContactUs" />
         <activity android:name=".Feedback" />
         <activity android:name=".JobNotice" />
         <activity
             android:name=".CareerPlanningMap"
-            android:theme="@style/dashboard" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UsefulLinks" />
         <activity android:name=".Announcements" />
         <activity android:name=".CareerOptionActivity" />

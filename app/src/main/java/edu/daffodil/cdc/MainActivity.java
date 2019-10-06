@@ -11,20 +11,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
-
-
-    private int[] icon = {R.drawable.career_planning, R.drawable.self_assessment, R.drawable.schedule_appointment,
-            R.drawable.career_option, R.drawable.briefcase_96px, R.drawable.ic_announcement,
-            R.drawable.link_104px, R.drawable.feedback_100px, R.drawable.phone_96px};
-
-    private String[] name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,24 +26,42 @@ public class MainActivity extends AppCompatActivity {
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Dashboard");
+//            getSupportActionBar().setHomeButtonEnabled(true);
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_settings);
         }
 
-        recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        name = new String[9];
-        name = getResources().getStringArray(R.array.dashboard);/*GET NAME FROM STRING RESOURCES*/
+        /*set the background image of profiles*/
+        ImageView imageView = findViewById(R.id.profile_background);
+        Picasso.get()
+                .load(R.drawable.pro_background)
+                .resize(100,100)
+                .into(imageView);
 
+        /*item name array for dashboard items*/
+        String[] name = getResources().getStringArray(R.array.dashboard);/*GET NAME FROM STRING RESOURCES*/
+        /*image resources for dashboard items*/
+        int[] icon = {R.drawable.career_planning,
+                R.drawable.self_assessment,
+                R.drawable.schedule_appointment,
+                R.drawable.career_option,
+                R.drawable.briefcase_96px,
+                R.drawable.ic_announcement,
+                R.drawable.link_104px,
+                R.drawable.feedback_100px,
+                R.drawable.phone_96px};
         CustomAdapter adapter = new CustomAdapter(this, icon, name);
         recyclerView.setAdapter(adapter);
     }
 
 
     private class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
-        Context context;
-        int[] icon;
-        String[] name;
-
+        private Context context;
+        private int[] icon;
+        private String[] name;
 
         CustomAdapter(Context context, int[] icon, String[] name) {
             this.context = context;
