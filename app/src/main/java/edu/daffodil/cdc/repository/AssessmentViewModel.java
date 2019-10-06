@@ -22,11 +22,17 @@ public class AssessmentViewModel extends AndroidViewModel {
 
     private LiveData<List<Assessments>> listLiveData;
 
+    private AssessmentRepository assessmentRepository;
+
     public AssessmentViewModel(@NonNull Application application) {
         super(application);
 
-        AssessmentRepository assessmentRepository = new AssessmentRepository(application);
+        assessmentRepository = new AssessmentRepository(application);
         listLiveData = assessmentRepository.getAllAssessments();
+    }
+
+    public void deleteAllQuestions() {
+        assessmentRepository.deleteAllQuestions();
     }
 
     public LiveData<List<Assessments>> getAllAssessments() {

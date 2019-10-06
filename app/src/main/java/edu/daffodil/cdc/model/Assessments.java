@@ -3,7 +3,9 @@ package edu.daffodil.cdc.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "assessments")
+import edu.daffodil.cdc.repository.AssessmentDatabase;
+
+@Entity(tableName = AssessmentDatabase.DB_NAME)
 public class Assessments {
 
     @PrimaryKey(autoGenerate = true)

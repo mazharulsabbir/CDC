@@ -15,6 +15,9 @@ public interface AssessmentDao {
     @Insert
     void insert(Assessments assessments);
 
-    @Query("SELECT * FROM assessments")
+    @Query("DELETE FROM assessments")
+    void deleteAllQuestions();
+
+    @Query("SELECT * FROM assessments ORDER BY question")
     LiveData<List<Assessments>> getAllAssessments();
 }

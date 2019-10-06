@@ -14,12 +14,21 @@ import edu.daffodil.cdc.model.Assessments;
 @Database(entities = {Assessments.class}, version = 1)
 public abstract class AssessmentDatabase extends RoomDatabase {
 
+    public static final String DB_NAME = "assessments";
+
     public static AssessmentDatabase assessmentDatabaseInstance;
+    public static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
+            new PopulateDbAsyncTask(assessmentDatabaseInstance).execute();
+        }
+    };
 
     public static synchronized AssessmentDatabase getInstance(Context context) {
         if (assessmentDatabaseInstance == null) {
             assessmentDatabaseInstance = Room.databaseBuilder(context.getApplicationContext(),
-                    AssessmentDatabase.class, "assessments")
+                    AssessmentDatabase.class, DB_NAME)
                     .fallbackToDestructiveMigration()
                     .addCallback(roomCallback)
                     .build();
@@ -28,17 +37,9 @@ public abstract class AssessmentDatabase extends RoomDatabase {
         return assessmentDatabaseInstance;
     }
 
-    public static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback(){
-        @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db) {
-            super.onCreate(db);
-            new PopulateDbAsyncTask(assessmentDatabaseInstance).execute();
-        }
-    };
-
     public abstract AssessmentDao assessmentDao();
 
-    public static class PopulateDbAsyncTask extends AsyncTask<Void,Void,Void>{
+    public static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
 
         private AssessmentDao assessmentDao;
 
