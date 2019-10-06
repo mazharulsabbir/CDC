@@ -85,6 +85,13 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        if (assessmentViewModel.mTimerRunning)
+            assessmentViewModel.mCountDownTimer.cancel();
+    }
+
+    @Override
     public void onClick(View v) {
         if (v.getId() == R.id.ans1 | v.getId() == R.id.ans2 | v.getId() == R.id.ans3 | v.getId() == R.id.ans4) {
             checkAnswer();
