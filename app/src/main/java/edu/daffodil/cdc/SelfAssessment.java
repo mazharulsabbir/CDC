@@ -99,6 +99,9 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
         }
 
         if (v.getId() == R.id.skip_ques) {
+            if (assessmentViewModel.mTimerRunning)
+                assessmentViewModel.mCountDownTimer.cancel();
+
             assessmentViewModel.mCountDownTimer.onFinish();
         }
     }
@@ -146,6 +149,9 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
         /*TODO: CHECK THE GIVEN ANSWER*/
 
         /*show next questions if available. this is checked on countdown timer OnFinish callback*/
+        if (assessmentViewModel.mTimerRunning)
+            assessmentViewModel.mCountDownTimer.cancel();
+
         assessmentViewModel.mCountDownTimer.onFinish();
     }
 
