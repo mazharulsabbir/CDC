@@ -1,4 +1,4 @@
-package edu.daffodil.cdc.repository;
+package edu.daffodil.cdc.view.model;
 
 import android.app.Application;
 import android.os.CountDownTimer;
@@ -10,6 +10,7 @@ import androidx.lifecycle.LiveData;
 import java.util.List;
 
 import edu.daffodil.cdc.model.Assessments;
+import edu.daffodil.cdc.repository.AssessmentRepository;
 
 public class AssessmentViewModel extends AndroidViewModel {
 

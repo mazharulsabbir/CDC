@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.daffodil.cdc.model.Assessments;
-import edu.daffodil.cdc.repository.AssessmentViewModel;
+import edu.daffodil.cdc.view.model.AssessmentViewModel;
 
 public class SelfAssessment extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,7 +29,6 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
     private ProgressBar timeRemainingProgress;
     private TextView textViewQuestion;
     private MaterialButton answer1, answer2, answer3, answer4;
-    private MaterialButton skipAns;
 
     private AssessmentViewModel assessmentViewModel;
 
@@ -54,6 +53,8 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
 
         answer4 = findViewById(R.id.ans4);
         answer4.setOnClickListener(this);
+
+        findViewById(R.id.skip_ques).setOnClickListener(this);
 
         assessmentsList = new ArrayList<>();
 
@@ -98,8 +99,7 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
         }
 
         if (v.getId() == R.id.skip_ques) {
-            showQuestion();
-            resetTimer();
+            assessmentViewModel.mCountDownTimer.onFinish();
         }
     }
 
@@ -145,10 +145,8 @@ public class SelfAssessment extends AppCompatActivity implements View.OnClickLis
         /*check the answer is correct or not*/
         /*TODO: CHECK THE GIVEN ANSWER*/
 
-        /*show next questions*/
-        resetTimer();
-
-        showQuestion();
+        /*show next questions if available. this is checked on countdown timer OnFinish callback*/
+        assessmentViewModel.mCountDownTimer.onFinish();
     }
 
     @Override
