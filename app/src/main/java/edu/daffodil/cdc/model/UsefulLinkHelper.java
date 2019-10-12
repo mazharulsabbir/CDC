@@ -1,4 +1,5 @@
 package edu.daffodil.cdc.model;
+
 public class UsefulLinkHelper {
     private String title;
     private String url;

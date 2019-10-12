@@ -16,8 +16,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.appbar.CollapsingToolbarLayout;
-
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
 
