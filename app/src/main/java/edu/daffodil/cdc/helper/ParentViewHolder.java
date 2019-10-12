@@ -1,5 +1,6 @@
 package edu.daffodil.cdc.helper;
 
+import android.animation.ObjectAnimator;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.RotateAnimation;
@@ -39,21 +40,11 @@ public class ParentViewHolder extends GroupViewHolder {
     }
 
     private void animateExpand() {
-        RotateAnimation rotate =
-                new RotateAnimation(0f, 180f, RELATIVE_TO_SELF, 0.5f, RELATIVE_TO_SELF, 0.5f);
-        rotate.setDuration(300);
-        rotate.setFillAfter(true);
-        arrow.setAnimation(rotate);
-        Log.d("animation----","open");
+        ObjectAnimator.ofFloat(arrow, "rotation", 0, 180).start();
     }
 
     private void animateCollapse() {
-        RotateAnimation rotate =
-                new RotateAnimation(180f, 0f, RELATIVE_TO_SELF, 0.5f, RELATIVE_TO_SELF, 0.5f);
-        rotate.setDuration(100);
-        rotate.setFillAfter(true);
-        arrow.setAnimation(rotate);
-        Log.d("animation----","close");
+        ObjectAnimator.ofFloat(arrow, "rotation", 180, 0).start();
 
     }
 
